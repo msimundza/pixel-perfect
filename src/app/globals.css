@@ -2,7 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Chakra Petch';
+  src: url('../app/fonts/Chakra_Petch/ChakraPetch-Medium.ttf')
+    format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   padding: 0;
+}
+
+@layer foundation {
+  :root {
+    --font-size: clamp(2rem, 8vw + 1rem, 10rem);
+    --padding: 15vh;
+  }
+
+  header {
+    z-index: 2;
+  }
+}
+
+@layer trick {
+  header {
+    /*	Sticky positioning within the container	*/
+    position: sticky;
+    top: calc(var(--padding));
+  }
+  body > header {
+    position: fixed;
+    left: 50%;
+    translate: -50% 0;
+    /*	Make sure it sits behind  */
+    z-index: 0;
+  }
+  /* Clip away the top of the main content */
+  main {
+    clip-path: inset(calc(var(--font-size) + var(--padding)) 0 0 0);
+  }
 }

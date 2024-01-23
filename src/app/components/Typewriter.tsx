@@ -53,22 +53,53 @@ const Typewriter: React.FC<TypewriterProps> = ({ options }) => {
   };
 
   useEffect(() => {
-    startBlink();
+    const typer = typerRef.current;
+    if (!typer) return;
 
-    typerHandle = setTimeout(() => {
-      replaceTyper();
-    }, 4000);
+    const CHAR_DELAY = 35;
+    const WORD_DELAY = 2400;
+
+    // Intersection Observer configuration
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5, // Adjust this threshold as needed
+    };
+
+    const callback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Start the typewriter animation when in the viewport
+          startBlink();
+          typerHandle = setTimeout(() => {
+            replaceTyper();
+          }, 4000);
+
+          // Disconnect the observer once triggered
+          observer.disconnect();
+        } else {
+          // Pause or reset the animation when out of the viewport
+          if (blinkHandle) clearInterval(blinkHandle);
+          if (typerHandle) clearTimeout(typerHandle);
+          typer.innerText = ''; // Reset the text
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, options);
+    observer.observe(typer);
 
     // Clean up the intervals on component unmount
     return () => {
       if (blinkHandle) clearInterval(blinkHandle);
       if (typerHandle) clearTimeout(typerHandle);
+      observer.disconnect(); // Disconnect the Intersection Observer
     };
   }, [options]);
 
   return (
     <span
-      className="text-5xl text-primary-100"
+      className="text-5xl text-primary-100 whitespace-pre-wrap sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
       ref={typerRef}
       id="typer"
     ></span>

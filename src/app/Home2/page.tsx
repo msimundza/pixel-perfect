@@ -1,11 +1,9 @@
-import Typewriter from './components/Typewriter';
-
 export default function Home() {
   const options = [
-    'Vizualno Savršene Web Stranice.',
-    'Digitalna Rješenja gdje Svaki Piksel Ima Svoje Mjesto.',
-    'Preciznost, Dizajn, Performanse.',
-    'Sinonim za Digitalnu Kreativnost.',
+    'vizualno savršene web stranice.',
+    'digitalna rješenja gdje svaki piksel ima svoje mjesto.',
+    'preciznost, dizajn, performanse.',
+    'sinonim za digitalnu kreativnost.',
   ];
 
   return (
@@ -28,12 +26,3 @@ export default function Home() {
     </>
   );
 }
-
-/* <section className="h-screen w-full bg-parallax bg-cover bg-center flex items-center">
-        <span className="text-primary-500 text-5xl">Pixel Perfect </span>
-        <Typewriter options={options} />
-        <span className="blink text-primary-500 text-5xl">|</span>
-        <div className="text-white mx-auto text-xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
-          Pixel Perfect
-        </div>
-      </section>*/
