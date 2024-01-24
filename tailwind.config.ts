@@ -23,9 +23,6 @@ const config: Config = {
           950: '#2b303b',
         },
       },
-      backgroundImage: (theme) => ({
-        parallax: `url('/parallax.webp')`,
-      }),
     },
   },
   plugins: [],

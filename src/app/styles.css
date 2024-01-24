@@ -120,7 +120,6 @@ section:nth-of-type(1) .section__content {
 }
 
 svg text {
-  font-size: clamp(2rem, 6vw + 1rem, 6rem);
   font-weight: 600;
 }
 
@@ -128,15 +127,24 @@ section:nth-of-type(1) {
   height: 200vh;
 }
 
-.signature path {
-  --draw: 1.025;
-  --end: 1.025;
-  stroke-dasharray: var(--end);
-  stroke-dashoffset: var(--draw);
+.picture-wrap {
+  position: fixed;
+  inset: 0;
+  opacity: 0;
 }
 
-.signature :is(.eye, .nose) {
-  fill: transparent;
+.picture-wrap img {
+  object-fit: cover;
+  width: 100%;
+  height: 100vh;
+  filter: saturate(1) brightness(1);
+}
+
+.picture-wrap::after {
+  content: '';
+  background: hsl(0 0% 0% / 0.65);
+  inset: 0;
+  position: absolute;
 }
 
 @supports (animation-timeline: scroll()) {
@@ -157,20 +165,13 @@ section:nth-of-type(1) {
     animation-timeline: --section;
     animation-range: entry 10% entry 35%, exit 0% exit 25%;
   }
-  .signature path {
-    animation: draw both linear;
+  .picture-wrap {
+    animation: fade-in both linear, fade-out both linear;
     animation-timeline: --section;
-    animation-range: entry 50% entry 80%;
+    animation-range: entry 0% entry 25%, exit 10% exit 35%;
   }
-  .signature :is(.eye, .nose) {
-    animation: draw both linear, fill both linear;
-    animation-timeline: --section;
-  }
-  .signature :is(.ear, .eye) {
-    animation-range: entry 80% entry 90%;
-  }
-  .signature .nose {
-    animation-range: entry 90% entry 100%;
+  .picture-wrap::after {
+    opacity: 0;
   }
   @keyframes fade {
     to {
