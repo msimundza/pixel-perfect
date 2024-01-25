@@ -8,7 +8,6 @@ interface TypewriterProps {
 const Typewriter: React.FC<TypewriterProps> = ({ options }) => {
   const typerRef = useRef<HTMLDivElement>(null);
   let blinkHandle: NodeJS.Timeout | null = null;
-  let typerHandle: NodeJS.Timeout | null = null;
 
   const startBlink = () => {
     blinkHandle = setInterval(() => {
@@ -32,7 +31,7 @@ const Typewriter: React.FC<TypewriterProps> = ({ options }) => {
     const next = options[(options.indexOf(current) + 1) % options.length];
 
     const CHAR_DELAY = 35;
-    const WORD_DELAY = 2400;
+    const WORD_DELAY = 1000;
 
     stopBlink();
 
@@ -53,11 +52,9 @@ const Typewriter: React.FC<TypewriterProps> = ({ options }) => {
   };
 
   useEffect(() => {
+    let typerHandle: NodeJS.Timeout | null = null;
     const typer = typerRef.current;
     if (!typer) return;
-
-    const CHAR_DELAY = 35;
-    const WORD_DELAY = 2400;
 
     // Intersection Observer configuration
     const options = {

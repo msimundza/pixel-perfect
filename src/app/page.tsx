@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 import './styles.css';
 import Image from 'next/image';
 import Typewriter from './components/Typewriter';
+import Cursor from './components/CustomCursor/Cursor';
+import ScrollIndicator from './components/ScrollIndicator/ScrollIndicator';
 
 const options = [
   'Vizualno Savršene Web Stranice.',
@@ -83,6 +85,7 @@ export default function Home1() {
 
   return (
     <>
+      <Cursor />
       <section>
         <div className="section__content">
           <svg className="text-xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
@@ -107,11 +110,12 @@ export default function Home1() {
       </section>
       <section>
         <div className="section__content">
-          <h2>
+          <a>
             fin.<span>p.s position: fixed ftw</span>
-          </h2>
+          </a>
         </div>
       </section>
+      <ScrollIndicator />
     </>
   );
 }
