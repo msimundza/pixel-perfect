@@ -171,6 +171,36 @@ section:nth-of-type(1) {
   .picture-wrap::after {
     opacity: 0;
   }
+
+  /* section:nth-of-type(3) .element-slide-in-left {
+    animation-timeline: --section;
+    animation: slideInFromLeft 1s both linear;
+    animation-range: entry 0% entry 25%, exit 10% exit 35%;
+  }
+
+  section:nth-of-type(3) .element-slide-in-right {
+    animation-timeline: --section;
+    animation: slideInFromRight 1s both linear;
+    animation-range: entry 0% entry 25%, exit 10% exit 35%;
+  } */
+
+  .element-slide-in-left {
+    view-timeline: --subjectReveal block;
+    animation-timeline: --subjectReveal;
+    animation-name: slideInFromLeft;
+    animation-fill-mode: both;
+    animation-duration: 1ms;
+    view-timeline-inset: 70% -100px;
+  }
+  .element-slide-in-right {
+    view-timeline: --subjectReveal block;
+    animation-timeline: --subjectReveal;
+    animation-name: slideInFromRight;
+    animation-fill-mode: both;
+    animation-duration: 1ms;
+    view-timeline-inset: 70% -100px;
+  }
+
   @keyframes fade {
     to {
       opacity: 0;
@@ -207,19 +237,6 @@ section:nth-of-type(1) {
     }
   }
 
-  @keyframes slideInFromLeft {
-    from {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-}
-
-@supports (animation-timeline: view()) {
   @keyframes slideInFromRight {
     from {
       transform: translateX(100%);
@@ -231,19 +248,14 @@ section:nth-of-type(1) {
     }
   }
 
-  .element-slide-in-left {
-    animation-timeline: view(block 10% 20%);
-    animation-name: slideInFromLeft;
-    animation-fill-mode: both;
-    animation-duration: 1ms; /* Firefox requires this to apply the animation */
-    animation-timing-function: linear;
-  }
-
-  .element-slide-in-right {
-    animation-timeline: view(block 10% 20%);
-    animation-name: slideInFromRight;
-    animation-fill-mode: both;
-    animation-duration: 1ms; /* Firefox requires this to apply the animation */
-    animation-timing-function: linear;
+  @keyframes slideInFromLeft {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
 }
