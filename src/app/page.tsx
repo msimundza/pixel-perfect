@@ -109,12 +109,69 @@ export default function Home1() {
         </div>
       </section>
       <section>
-        <div className="section__content">
-          <a>
-            fin.<span>p.s position: fixed ftw</span>
-          </a>
+        <div className="section__content mb-16">
+          <div className="container mx-auto mt-16">
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="element-slide-in-left uppercase text-black text-8xl flex items-center justify-center">
+                O meni
+              </div>
+              <div className="element-slide-in-right bg-black text-3xl text-white shadow-lg rounded-lg p-6">
+                <div className="first-letter:text-5xl">
+                  Strastveni web developer s preko 10 godina iskustva u IT
+                  sektoru, od rada sa Start-up projektima do rada sa velikim
+                  multimilijunskim tvrtkama
+                </div>
+              </div>
+              <div className="bg-black text-3xl text-white shadow-lg rounded-lg p-6">
+                <div className="first-letter:text-5xl mb-2">
+                  Pomaganje malim i srednjim poduzećima da ostvare svoj puni
+                  online potencijal kroz detaljnu analizu zahtjeva, strateško
+                  planiranje i primjenu najnovijih tehnologija u dizajnu i
+                  razvoju web stranica i/ili aplikacija.
+                </div>
+                <div className="first-letter:text-5xl mb-2">
+                  Osigurati da Vaša online prisutnost ne samo da ostane
+                  relevantna, već i da kontinuirano raste i prilagođava se
+                  promjenjivom digitalnom pejzažu.
+                </div>
+              </div>
+              <div className="uppercase text-black text-8xl flex items-center justify-center">
+                Misija
+              </div>
+              <div className="uppercase text-black text-8xl flex items-center justify-center">
+                Nudim
+              </div>
+              <div className="bg-black text-3xl text-white shadow-lg rounded-lg p-6">
+                <div className="first-letter:text-5xl mb-2">
+                  Izrada personaliziranih web stranica i/ili aplikacije koje
+                  točno odgovaraju potrebama i ciljevima svakog klijenta.
+                </div>
+                <div className="first-letter:text-5xl mb-2">
+                  Održavanje i modernizacija postojećih web stranica i/ili
+                  aplikacija.
+                </div>
+              </div>
+              <div className="bg-black text-3xl text-white shadow-lg rounded-lg p-6">
+                <div className="first-letter:text-5xl mb-2">
+                  Odabir Pixel Perfect obrta za Vaše web rješenje znači
+                  posvećenost detaljima, povjerenje u individualni pristup i
+                  strast prema web tehnologijama.
+                </div>
+                <div className="first-letter:text-5xl mb-2">
+                  Veselim se prilici da zajedno radimo na ostvarivanju vaše
+                  vizije i postavljanju vašeg poslovanja na putu prema online
+                  uspjehu.
+                </div>
+              </div>
+              <div className="uppercase text-black text-8xl flex items-center justify-center">
+                Zašto Pixel Perfect?
+              </div>
+            </div>
+          </div>
         </div>
       </section>
+      <section></section>
+
       <ScrollIndicator />
     </>
   );

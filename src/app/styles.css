@@ -5,7 +5,6 @@
 }
 
 body {
-  cursor: none;
   display: grid;
   place-items: center;
   min-height: 100vh;
@@ -206,5 +205,45 @@ section:nth-of-type(1) {
       transform: translateZ(99vh);
       background: black;
     }
+  }
+
+  @keyframes slideInFromLeft {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @keyframes slideInFromRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .element-slide-in-left {
+    animation-timeline: view(block 10% 20%);
+    animation-name: slideInFromLeft;
+    animation-fill-mode: both;
+    animation-duration: 1ms; /* Firefox requires this to apply the animation */
+    animation-timing-function: linear;
+  }
+
+  .element-slide-in-right {
+    animation-timeline: view(block 10% 20%);
+    animation-name: slideInFromRight;
+    animation-fill-mode: both;
+    animation-duration: 1ms; /* Firefox requires this to apply the animation */
+    animation-timing-function: linear;
   }
 }
