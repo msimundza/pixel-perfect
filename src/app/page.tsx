@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Typewriter from './components/Typewriter';
 import Cursor from './components/CustomCursor/Cursor';
 import ScrollIndicator from './components/ScrollIndicator/ScrollIndicator';
+import { useGSAP } from '@gsap/react';
 
 const options = [
   'Vizualno Savršene Web Stranice.',
@@ -15,11 +16,10 @@ const options = [
   'Sinonim za Digitalnu Kreativnost.',
 ];
 
-export default function Home1() {
-  useEffect(() => {
+export default function Home() {
+  useGSAP(() => {
     if (!CSS.supports('animation-timeline: scroll()')) {
       gsap.registerPlugin(ScrollTrigger);
-      console.clear();
       const scrub = 0.2;
       const name = document.querySelector(
         'section:nth-of-type(1) svg'
@@ -80,8 +80,39 @@ export default function Home1() {
             end: 'bottom 50%',
           },
         });
+
+      const slideInLeftboxes = gsap.utils.toArray('.element-slide-in-left');
+      slideInLeftboxes.forEach((slideInLeftBox: any) => {
+        gsap.to(slideInLeftBox, {
+          scrollTrigger: {
+            trigger: slideInLeftBox,
+            scrub: true,
+            start: 'top bottom', // when the bottom of the trigger hits the bottom of the viewport
+            end: 'center center', // end after triggers center scrolls past center of the viewport
+          },
+          keyframes: {
+            '0%': { transform: 'translateX(-100%)', opacity: 0 },
+            '100%': { transform: 'translateX(0)', opacity: 1 },
+          },
+        });
+      });
+      const slideInRightboxes = gsap.utils.toArray('.element-slide-in-right');
+      slideInRightboxes.forEach((slideInRightBox: any) => {
+        gsap.to(slideInRightBox, {
+          scrollTrigger: {
+            trigger: slideInRightBox,
+            scrub: true,
+            start: 'top bottom', // when the bottom of the trigger hits the bottom of the viewport
+            end: 'center center', // end after triggers center scrolls past center of the viewport
+          },
+          keyframes: {
+            '0%': { transform: 'translateX(100%)', opacity: 0 },
+            '100%': { transform: 'translateX(0)', opacity: 1 },
+          },
+        });
+      });
     }
-  }, []);
+  });
 
   return (
     <>
@@ -109,69 +140,70 @@ export default function Home1() {
         </div>
       </section>
       <section>
-        <div className=" mb-16">
+        <div className="mb-16">
           <div className="container mx-auto mt-16">
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="element-slide-in-left uppercase text-black text-8xl flex items-center justify-center">
+            <div className="flex flex-col md:flex-row md:flex-wrap sm:p-2">
+              <div className="md:order-1 element-slide-in-left uppercase text-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex items-center justify-center w-full md:w-1/2 mb-2">
                 O meni
               </div>
-              <div className="element-slide-in-right bg-black text-3xl text-white shadow-lg rounded-lg p-6">
-                <div className="first-letter:text-5xl">
+              <div className="md:order-2 element-slide-in-right bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
+                <div className="first-letter:text-3xl sm:first-letter:text-4xl md:first-letter:text-5xl lg:first-letter:text-6xl mb-2">
                   Strastveni web developer s preko 10 godina iskustva u IT
                   sektoru, od rada sa Start-up projektima do rada sa velikim
                   multimilijunskim tvrtkama
                 </div>
               </div>
-              <div className="element-slide-in-left bg-black text-3xl text-white shadow-lg rounded-lg p-6">
-                <div className="first-letter:text-5xl mb-2">
+              <div className="md:order-4 element-slide-in-right uppercase text-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex items-center justify-center w-full md:w-1/2 mb-2">
+                Misija
+              </div>
+              <div className="md:order-3 element-slide-in-left bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
+                <div className="first-letter:text-3xl sm:first-letter:text-4xl md:first-letter:text-5xl lg:first-letter:text-6xl mb-2">
                   Pomaganje malim i srednjim poduzećima da ostvare svoj puni
                   online potencijal kroz detaljnu analizu zahtjeva, strateško
                   planiranje i primjenu najnovijih tehnologija u dizajnu i
                   razvoju web stranica i/ili aplikacija.
                 </div>
-                <div className="first-letter:text-5xl mb-2">
+                <div className="first-letter:text-3xl sm:first-letter:text-4xl md:first-letter:text-5xl lg:first-letter:text-6xl mb-2">
                   Osigurati da Vaša online prisutnost ne samo da ostane
                   relevantna, već i da kontinuirano raste i prilagođava se
                   promjenjivom digitalnom pejzažu.
                 </div>
               </div>
-              <div className="element-slide-in-right uppercase text-black text-8xl flex items-center justify-center">
-                Misija
-              </div>
-              <div className="element-slide-in-left uppercase text-black text-8xl flex items-center justify-center">
+              <div className="md:order-5 element-slide-in-left uppercase text-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex items-center justify-center w-full md:w-1/2 mb-2">
                 Nudim
               </div>
-              <div className="element-slide-in-right bg-black text-3xl text-white shadow-lg rounded-lg p-6">
-                <div className="first-letter:text-5xl mb-2">
+              <div className="md:order-6 element-slide-in-right bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
+                <div className="first-letter:text-3xl sm:first-letter:text-4xl md:first-letter:text-5xl lg:first-letter:text-6xl mb-2">
                   Izrada personaliziranih web stranica i/ili aplikacije koje
                   točno odgovaraju potrebama i ciljevima svakog klijenta.
                 </div>
-                <div className="first-letter:text-5xl mb-2">
+                <div className="first-letter:text-3xl sm:first-letter:text-4xl md:first-letter:text-5xl lg:first-letter:text-6xl mb-2">
                   Održavanje i modernizacija postojećih web stranica i/ili
                   aplikacija.
                 </div>
               </div>
-              <div className="element-slide-in-left bg-black text-3xl text-white shadow-lg rounded-lg p-6">
-                <div className="first-letter:text-5xl mb-2">
+              <div className="md:order-8 element-slide-in-right text-center uppercase text-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex items-center justify-center w-full md:w-1/2 mb-2">
+                Zašto Pixel Perfect?
+              </div>
+              <div className="md:order-7 element-slide-in-left bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
+                <div className="first-letter:text-3xl sm:first-letter:text-4xl md:first-letter:text-5xl lg:first-letter:text-6xl mb-2">
                   Odabir Pixel Perfect obrta za Vaše web rješenje znači
                   posvećenost detaljima, povjerenje u individualni pristup i
                   strast prema web tehnologijama.
                 </div>
-                <div className="first-letter:text-5xl mb-2">
+                <div className="first-letter:text-3xl sm:first-letter:text-4xl md:first-letter:text-5xl lg:first-letter:text-6xl mb-2">
                   Veselim se prilici da zajedno radimo na ostvarivanju vaše
                   vizije i postavljanju vašeg poslovanja na putu prema online
                   uspjehu.
                 </div>
               </div>
-              <div className="element-slide-in-right text-center uppercase text-black text-8xl flex items-center justify-center">
-                Zašto Pixel Perfect?
-              </div>
             </div>
           </div>
         </div>
       </section>
-      <section></section>
-
+      <section>
+        <div className="section__content"></div>
+      </section>
       <ScrollIndicator />
     </>
   );
