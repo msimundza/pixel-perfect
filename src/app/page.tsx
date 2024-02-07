@@ -141,7 +141,7 @@ export default function Home() {
       </section>
       <section>
         <div className="mb-16">
-          <div className="container mx-auto mt-16">
+          <div className="container mx-auto mt-16 sm:overflow-hidden">
             <div className="flex flex-col md:flex-row md:flex-wrap sm:p-2">
               <div className="md:order-1 element-slide-in-left uppercase text-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex items-center justify-center w-full md:w-1/2 mb-2">
                 O meni
