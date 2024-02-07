@@ -9,6 +9,8 @@ import Cursor from './components/CustomCursor/Cursor';
 import ScrollIndicator from './components/ScrollIndicator/ScrollIndicator';
 import { useGSAP } from '@gsap/react';
 import ProjectShowcase from './components/ProjectsShowcase/ProjectsShowcase';
+import ContactForm from './components/ContactForm/ContactForm';
+import Footer from './components/Footer/Footer';
 
 const options = [
   'Vizualno Savršene Web Stranice.',
@@ -190,7 +192,9 @@ export default function Home() {
       <section className="bg-black py-12 px-4">
         <ProjectShowcase />
       </section>
+      <ContactForm />
       <ScrollIndicator />
+      <Footer />
     </>
   );
 }
