@@ -81,33 +81,18 @@ export default function Home() {
           },
         });
 
-      const slideInLeftboxes = gsap.utils.toArray('.element-slide-in-left');
-      slideInLeftboxes.forEach((slideInLeftBox: any) => {
-        gsap.to(slideInLeftBox, {
+      const scaleUpBoxes = gsap.utils.toArray('.element-scale-up');
+      scaleUpBoxes.forEach((scaleUpBox: any) => {
+        gsap.to(scaleUpBox, {
           scrollTrigger: {
-            trigger: slideInLeftBox,
+            trigger: scaleUpBox,
             scrub: true,
             start: 'top bottom', // when the bottom of the trigger hits the bottom of the viewport
             end: 'center center', // end after triggers center scrolls past center of the viewport
           },
           keyframes: {
-            '0%': { transform: 'translateX(-100%)', opacity: 0 },
-            '100%': { transform: 'translateX(0)', opacity: 1 },
-          },
-        });
-      });
-      const slideInRightboxes = gsap.utils.toArray('.element-slide-in-right');
-      slideInRightboxes.forEach((slideInRightBox: any) => {
-        gsap.to(slideInRightBox, {
-          scrollTrigger: {
-            trigger: slideInRightBox,
-            scrub: true,
-            start: 'top bottom', // when the bottom of the trigger hits the bottom of the viewport
-            end: 'center center', // end after triggers center scrolls past center of the viewport
-          },
-          keyframes: {
-            '0%': { transform: 'translateX(100%)', opacity: 0 },
-            '100%': { transform: 'translateX(0)', opacity: 1 },
+            '0%': { transform: 'scale(0.8)', opacity: 0 },
+            '100%': { transform: 'scale(1)', opacity: 1 },
           },
         });
       });
@@ -133,7 +118,7 @@ export default function Home() {
         <div className="section__content">
           <p>
             <Typewriter options={options} />
-            <span className="blink text-primary-500 text-xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+            <span className="blink text-primary-500 text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
               |
             </span>
           </p>
@@ -141,22 +126,22 @@ export default function Home() {
       </section>
       <section>
         <div className="mb-16">
-          <div className="container mx-auto mt-16 sm:overflow-hidden">
+          <div className="mx-auto mt-16">
             <div className="flex flex-col md:flex-row md:flex-wrap sm:p-2">
-              <div className="md:order-1 element-slide-in-left uppercase text-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex items-center justify-center w-full md:w-1/2 mb-2">
+              <div className="md:order-1 element-scale-up uppercase text-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex items-center justify-center w-full md:w-1/2 mb-2">
                 O meni
               </div>
-              <div className="md:order-2 element-slide-in-right bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl  text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
+              <div className="md:order-2 element-scale-up bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl  text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
                 <div className="first-letter:text-3xl sm:first-letter:text-4xl md:first-letter:text-5xl lg:first-letter:text-6xl mb-2">
                   Strastveni web developer s preko 10 godina iskustva u IT
                   sektoru, od rada sa Start-up projektima do rada sa velikim
                   multimilijunskim tvrtkama
                 </div>
               </div>
-              <div className="md:order-4 element-slide-in-right uppercase text-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex items-center justify-center w-full md:w-1/2 mb-2">
+              <div className="md:order-4 element-scale-up uppercase text-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex items-center justify-center w-full md:w-1/2 mb-2">
                 Moja misija
               </div>
-              <div className="md:order-3 element-slide-in-left bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
+              <div className="md:order-3 element-scale-up bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
                 <div className="first-letter:text-3xl sm:first-letter:text-4xl md:first-letter:text-5xl lg:first-letter:text-6xl mb-2">
                   Pomaganje malim i srednjim poduzećima da ostvare svoj puni
                   online potencijal kroz detaljnu analizu zahtjeva, strateško
@@ -169,10 +154,10 @@ export default function Home() {
                   promjenjivom digitalnom pejzažu.
                 </div>
               </div>
-              <div className="md:order-5 element-slide-in-left uppercase text-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex items-center justify-center w-full md:w-1/2 mb-2">
+              <div className="md:order-5 element-scale-up uppercase text-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex items-center justify-center w-full md:w-1/2 mb-2">
                 Nudim
               </div>
-              <div className="md:order-6 element-slide-in-right bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl  text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
+              <div className="md:order-6 element-scale-up bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl  text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
                 <div className="first-letter:text-3xl sm:first-letter:text-4xl md:first-letter:text-5xl lg:first-letter:text-6xl mb-2">
                   Izrada personaliziranih web stranica i/ili aplikacije koje
                   točno odgovaraju potrebama i ciljevima svakog klijenta.
@@ -182,10 +167,10 @@ export default function Home() {
                   aplikacija.
                 </div>
               </div>
-              <div className="md:order-8 element-slide-in-right text-center uppercase text-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex items-center justify-center w-full md:w-1/2 mb-2">
+              <div className="md:order-8 element-scale-up text-center uppercase text-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex items-center justify-center w-full md:w-1/2 mb-2">
                 Zašto Pixel Perfect?
               </div>
-              <div className="md:order-7 element-slide-in-left bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl  text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
+              <div className="md:order-7 element-scale-up bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl  text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
                 <div className="first-letter:text-3xl sm:first-letter:text-4xl md:first-letter:text-5xl lg:first-letter:text-6xl mb-2">
                   Odabir Pixel Perfect obrta za Vaše web rješenje znači
                   posvećenost detaljima, povjerenje u individualni pristup i
@@ -202,7 +187,7 @@ export default function Home() {
         </div>
       </section>
       <section>
-        <div className="section__content"></div>
+        <div className="bg-black min-h-screen"></div>
       </section>
       <ScrollIndicator />
     </>

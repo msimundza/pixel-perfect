@@ -150,18 +150,10 @@ section:nth-of-type(1) {
     opacity: 0;
   }
 
-  .element-slide-in-left {
+  .element-scale-up {
     view-timeline: --subjectReveal block;
     animation-timeline: --subjectReveal;
-    animation-name: slideInFromLeft;
-    animation-fill-mode: both;
-    animation-duration: 1ms;
-    view-timeline-inset: 70% -100px;
-  }
-  .element-slide-in-right {
-    view-timeline: --subjectReveal block;
-    animation-timeline: --subjectReveal;
-    animation-name: slideInFromRight;
+    animation-name: scaleUp;
     animation-fill-mode: both;
     animation-duration: 1ms;
     view-timeline-inset: 70% -100px;
@@ -203,24 +195,13 @@ section:nth-of-type(1) {
     }
   }
 
-  @keyframes slideInFromRight {
+  @keyframes scaleUp {
     from {
-      transform: translateX(100%);
+      transform: scale(0.8);
       opacity: 0;
     }
     to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-
-  @keyframes slideInFromLeft {
-    from {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
+      transform: scale(1);
       opacity: 1;
     }
   }
