@@ -8,6 +8,7 @@ import Typewriter from './components/Typewriter';
 import Cursor from './components/CustomCursor/Cursor';
 import ScrollIndicator from './components/ScrollIndicator/ScrollIndicator';
 import { useGSAP } from '@gsap/react';
+import ProjectShowcase from './components/ProjectsShowcase/ProjectsShowcase';
 
 const options = [
   'Vizualno Savršene Web Stranice.',
@@ -186,8 +187,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section>
-        <div className="bg-black min-h-screen"></div>
+      <section className="bg-black py-12 px-4">
+        <ProjectShowcase />
       </section>
       <ScrollIndicator />
     </>

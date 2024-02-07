@@ -15,3 +15,7 @@ body {
   padding: 0;
   cursor: none;
 }
+
+a {
+  cursor: none !important;
+}
