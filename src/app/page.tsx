@@ -146,7 +146,7 @@ export default function Home() {
               <div className="md:order-1 element-slide-in-left uppercase text-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex items-center justify-center w-full md:w-1/2 mb-2">
                 O meni
               </div>
-              <div className="md:order-2 element-slide-in-right bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
+              <div className="md:order-2 element-slide-in-right bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl  text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
                 <div className="first-letter:text-3xl sm:first-letter:text-4xl md:first-letter:text-5xl lg:first-letter:text-6xl mb-2">
                   Strastveni web developer s preko 10 godina iskustva u IT
                   sektoru, od rada sa Start-up projektima do rada sa velikim
@@ -154,9 +154,9 @@ export default function Home() {
                 </div>
               </div>
               <div className="md:order-4 element-slide-in-right uppercase text-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex items-center justify-center w-full md:w-1/2 mb-2">
-                Misija
+                Moja misija
               </div>
-              <div className="md:order-3 element-slide-in-left bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
+              <div className="md:order-3 element-slide-in-left bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
                 <div className="first-letter:text-3xl sm:first-letter:text-4xl md:first-letter:text-5xl lg:first-letter:text-6xl mb-2">
                   Pomaganje malim i srednjim poduzećima da ostvare svoj puni
                   online potencijal kroz detaljnu analizu zahtjeva, strateško
@@ -172,7 +172,7 @@ export default function Home() {
               <div className="md:order-5 element-slide-in-left uppercase text-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex items-center justify-center w-full md:w-1/2 mb-2">
                 Nudim
               </div>
-              <div className="md:order-6 element-slide-in-right bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
+              <div className="md:order-6 element-slide-in-right bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl  text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
                 <div className="first-letter:text-3xl sm:first-letter:text-4xl md:first-letter:text-5xl lg:first-letter:text-6xl mb-2">
                   Izrada personaliziranih web stranica i/ili aplikacije koje
                   točno odgovaraju potrebama i ciljevima svakog klijenta.
@@ -185,7 +185,7 @@ export default function Home() {
               <div className="md:order-8 element-slide-in-right text-center uppercase text-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex items-center justify-center w-full md:w-1/2 mb-2">
                 Zašto Pixel Perfect?
               </div>
-              <div className="md:order-7 element-slide-in-left bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
+              <div className="md:order-7 element-slide-in-left bg-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl  text-white shadow-lg rounded-lg p-6 w-full md:w-1/2 mb-10">
                 <div className="first-letter:text-3xl sm:first-letter:text-4xl md:first-letter:text-5xl lg:first-letter:text-6xl mb-2">
                   Odabir Pixel Perfect obrta za Vaše web rješenje znači
                   posvećenost detaljima, povjerenje u individualni pristup i
