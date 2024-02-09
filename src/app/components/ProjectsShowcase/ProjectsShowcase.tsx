@@ -3,12 +3,11 @@ import Image from 'next/image';
 const projects = [
   {
     id: 1,
-    name: "Jim's Gym",
+    name: 'Jim Gym',
     description: 'Najmodernija teretana u Hrvatskoj',
     imageUrl: '/jimgym.webp',
     url: 'https://pixelperfect.hr',
   },
-  // Add more projects as needed
 ];
 
 const ProjectShowcase = () => {

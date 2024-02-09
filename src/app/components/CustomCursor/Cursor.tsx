@@ -33,7 +33,7 @@ const Cursor: React.FC = () => {
   }, []);
 
   return (
-    <div
+    <span
       className={`custom-cursor ${clickable ? 'clickable' : ''}`}
       style={{
         left: `${position.x}px`,
