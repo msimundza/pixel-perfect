@@ -1,12 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
-import {
-  type Container,
-  type ISourceOptions,
-  MoveDirection,
-  OutMode,
-} from '@tsparticles/engine';
+import { type ISourceOptions } from '@tsparticles/engine';
 import { loadSlim } from '@tsparticles/slim';
+import Image from 'next/image';
 
 const Footer: React.FC = () => {
   const [init, setInit] = useState(false);
@@ -19,48 +15,40 @@ const Footer: React.FC = () => {
     });
   }, []);
 
-  const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log(container);
-  };
-
   const options: ISourceOptions = useMemo(
     () => ({
-      background: {
-        color: {
-          value: 'black',
-        },
-      },
       fpsLimit: 120,
       interactivity: {
         events: {
+          onHover: {
+            enable: true,
+            mode: 'attract',
+          },
           onClick: {
             enable: true,
             mode: 'push',
           },
-          onHover: {
-            enable: true,
-            mode: 'repulse',
-          },
         },
         modes: {
-          push: {
-            quantity: 4,
-          },
-          repulse: {
-            distance: 100,
+          attract: {
+            distance: 200,
             duration: 0.4,
+            speed: 1,
+          },
+          push: {
+            quantity: 5,
           },
         },
       },
       particles: {
         color: {
-          value: '#ffffff',
+          value: '#FFFFFF',
         },
         links: {
-          color: '#ffffff',
+          color: '#FFFFFF',
           distance: 150,
           enable: true,
-          opacity: 0.5,
+          opacity: 0.3,
           width: 1,
         },
         move: {
@@ -70,17 +58,21 @@ const Footer: React.FC = () => {
             default: 'out',
           },
           random: false,
-          speed: 6,
+          speed: 3,
           straight: false,
         },
         number: {
           density: {
             enable: true,
           },
-          value: 80,
+          value: 100,
+          limit: {
+            mode: 'wait',
+            value: 300,
+          },
         },
         opacity: {
-          value: 0.5,
+          value: 0.3,
         },
         shape: {
           type: 'circle',
@@ -102,74 +94,74 @@ const Footer: React.FC = () => {
       <footer className="w-full bg-black text-white relative">
         <Particles
           id="tsparticles"
-          particlesLoaded={particlesLoaded}
           options={options}
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-0 pointer-events-none"
         />
         <div className="max-w-6xl mx-auto px-4 py-8 md:py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
             <div>
-              <h2 className="text-lg font-semibold">Your Logo</h2>
-              <p className="mt-2 text-gray-400">
-                Creating impactful digital experiences.
-              </p>
+              <Image
+                src="/logo.webp"
+                alt="Pixel Perfect logo"
+                width={150}
+                height={150}
+                className=" rounded-full grayscale hover:grayscale-0 transition-all duration-300"
+              />
             </div>
             <div>
-              <h2 className="text-lg font-semibold">Quick Links</h2>
+              <h2 className="text-xl font-semibold">Brza navigacija</h2>
               <ul className="mt-2">
                 <li>
                   <a
-                    href="/about"
-                    className="hover:text-gray-300 transition-colors duration-300"
+                    href="#about"
+                    className="text-lg hover:text-gray-300 transition-colors duration-300"
                   >
-                    About Us
+                    O meni
                   </a>
                 </li>
                 <li>
                   <a
-                    href="/services"
-                    className="hover:text-gray-300 transition-colors duration-300"
+                    href="#projects"
+                    className="text-lg hover:text-gray-300 transition-colors duration-300"
                   >
-                    Our Services
+                    Projekti
                   </a>
                 </li>
                 <li>
                   <a
-                    href="/contact"
-                    className="hover:text-gray-300 transition-colors duration-300"
+                    href="#contact-me"
+                    className="text-lg hover:text-gray-300 transition-colors duration-300"
                   >
-                    Contact
+                    Kontaktirajte me
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h2 className="text-lg font-semibold">Follow Us</h2>
-              <div className="flex mt-2 space-x-4">
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-gray-300 transition-colors duration-300"
-                >
-                  Twitter
-                </a>
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-gray-300 transition-colors duration-300"
-                >
-                  Facebook
-                </a>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-gray-300 transition-colors duration-300"
-                >
-                  Instagram
-                </a>
+              <h2 className="text-xl font-semibold">Budite u toku</h2>
+              <div className="mt-2">
+                <ul className="mt-2">
+                  <li>
+                    <a
+                      href="https://www.facebook.com/profile.php?id=61556434918711"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-lg hover:text-gray-300 transition-colors duration-300"
+                    >
+                      Facebook
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://instagram.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-lg hover:text-gray-300 transition-colors duration-300"
+                    >
+                      Instagram
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
