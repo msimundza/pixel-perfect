@@ -1,7 +1,28 @@
+import React, { useState, useEffect } from 'react';
 import './ScrollIndicator.css';
+
 const ScrollIndicator: React.FC = () => {
+  const [isVisible, setIsVisible] = useState<boolean>(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const distanceToBottom =
+        document.body.scrollHeight - window.innerHeight - window.scrollY;
+      const threshold = 100;
+
+      if (distanceToBottom < threshold) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="scroll-indicator">
+    <div className={`scroll-indicator ${!isVisible ? 'hidden' : ''}`}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="40"
