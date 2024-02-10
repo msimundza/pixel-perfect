@@ -97,7 +97,7 @@ const Typewriter: React.FC<TypewriterProps> = ({ options }) => {
 
   return (
     <span
-      className="text-primary-100 whitespace-pre-wrap text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
+      className="text-white whitespace-pre-wrap text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
       ref={typerRef}
       id="typer"
     ></span>

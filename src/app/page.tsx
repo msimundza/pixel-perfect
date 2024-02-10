@@ -1,7 +1,6 @@
 'use client';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useEffect } from 'react';
 import './styles.css';
 import Image from 'next/image';
 import Typewriter from './components/Typewriter';
@@ -9,8 +8,8 @@ import Cursor from './components/CustomCursor/Cursor';
 import ScrollIndicator from './components/ScrollIndicator/ScrollIndicator';
 import { useGSAP } from '@gsap/react';
 import ProjectShowcase from './components/ProjectsShowcase/ProjectsShowcase';
-import ContactForm from './components/ContactForm/ContactForm';
 import Footer from './components/Footer/Footer';
+import { ContactForm } from './components/ContactForm/ContactForm';
 
 const options = [
   'Vizualno Savršene Web Stranice.',
@@ -121,7 +120,7 @@ export default function Home() {
         <div className="section__content">
           <p>
             <Typewriter options={options} />
-            <span className="blink text-primary-500 text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+            <span className="blink text-white text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
               |
             </span>
           </p>
@@ -192,7 +191,9 @@ export default function Home() {
       <section className="bg-black py-12 px-4">
         <ProjectShowcase />
       </section>
-      <ContactForm />
+      <section className="bg-white py-12 px-4">
+        <ContactForm />
+      </section>
       <ScrollIndicator />
       <Footer />
     </>

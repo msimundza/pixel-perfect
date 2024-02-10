@@ -11,20 +11,8 @@ const config: Config = {
       screens: {
         xs: '375px',
       },
-      colors: {
-        primary: {
-          50: '#f4f7f9',
-          100: '#eaf1f5',
-          200: '#d9e4ec',
-          300: '#c2d2df',
-          400: '#a9bcd0',
-          500: '#93a5c1',
-          600: '#8191b3',
-          700: '#697799',
-          800: '#57637c',
-          900: '#4a5365',
-          950: '#2b303b',
-        },
+      boxShadow: {
+        button: '10px 10px 0 black',
       },
     },
   },
