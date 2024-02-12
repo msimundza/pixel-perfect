@@ -1,4 +1,3 @@
-'use client';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './styles.css';
@@ -11,6 +10,7 @@ import ProjectShowcase from './components/ProjectsShowcase/ProjectsShowcase';
 import Footer from './components/Footer/Footer';
 import { ContactForm } from './components/ContactForm/ContactForm';
 import About from './components/About/About';
+import { getDictionary } from './dictionaries';
 
 const options = [
   'Vizualno Savršene Web Stranice.',
@@ -19,7 +19,13 @@ const options = [
   'Sinonim za Digitalnu Kreativnost.',
 ];
 
-export default function Home() {
+export default async function Home({
+  params: { lang },
+}: {
+  params: { lang: string };
+}) {
+  const dict = await getDictionary(lang); // en
+
   useGSAP(() => {
     if (!CSS.supports('animation-timeline: scroll()')) {
       gsap.registerPlugin(ScrollTrigger);
@@ -109,7 +115,7 @@ export default function Home() {
         <div className="section__content">
           <svg className="text-xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
             <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle">
-              Pixel Perfect
+              Pixel Perfect {dict.abc}
             </text>
           </svg>
         </div>
