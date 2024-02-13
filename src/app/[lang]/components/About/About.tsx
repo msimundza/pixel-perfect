@@ -1,7 +1,30 @@
+'use client';
+import { useGSAP } from '@gsap/react';
+
 const About = () => {
+  useGSAP(() => {
+    if (!CSS.supports('animation-timeline: scroll()')) {
+      const scaleUpBoxes = gsap.utils.toArray('.element-scale-up');
+      scaleUpBoxes.forEach((scaleUpBox: any) => {
+        gsap.to(scaleUpBox, {
+          scrollTrigger: {
+            trigger: scaleUpBox,
+            scrub: true,
+            start: 'top bottom', // when the bottom of the trigger hits the bottom of the viewport
+            end: 'center center', // end after triggers center scrolls past center of the viewport
+          },
+          keyframes: {
+            '0%': { transform: 'scale(0.8)', opacity: 0 },
+            '100%': { transform: 'scale(1)', opacity: 1 },
+          },
+        });
+      });
+    }
+  });
+
   return (
-    <div className="mb-16">
-      <div className="mx-auto mt-16">
+    <div className="pb-16">
+      <div className="mx-auto pt-16">
         <div className="flex flex-col md:flex-row md:flex-wrap sm:p-2">
           <div className="md:order-1 element-scale-up uppercase text-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex items-center justify-center w-full md:w-1/2 mb-2">
             O meni

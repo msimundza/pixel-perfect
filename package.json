@@ -12,6 +12,7 @@
     "lint-staged": "lint-staged"
   },
   "dependencies": {
+    "@formatjs/intl-localematcher": "^0.5.4",
     "@gsap/react": "^2.1.0",
     "@tsparticles/engine": "^3.2.1",
     "@tsparticles/react": "^3.0.0",

@@ -66,7 +66,6 @@ const Typewriter: React.FC<TypewriterProps> = ({ options }) => {
     const callback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          console.log('Typewriter is in the viewport!');
           // Start the typewriter animation when in the viewport
           startBlink();
           typerHandle = setTimeout(() => {

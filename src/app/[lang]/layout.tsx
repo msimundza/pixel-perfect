@@ -2,6 +2,11 @@ import type { Metadata } from 'next';
 import { Chakra_Petch } from 'next/font/google';
 import './globals.css';
 import Header from './components/Header/Header';
+import { i18n, type Locale } from '../../i18n-config';
+
+export async function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ lang: locale }));
+}
 
 const chakra = Chakra_Petch({
   subsets: ['latin'],
@@ -15,14 +20,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: { lang: Locale };
 }) {
   return (
-    <html lang="en">
-      <body className={chakra.className}>
+    <html lang={params.lang}>
+      <body
+        className={`${chakra.className} grid place-items-center min-h-screen text-white overflow-x-hidden`}
+      >
         <Header />
-        <main>{children}</main>
+        <main className="overflow-auto overflow-x-hidden h-screen w-screen -mt-[50px]">
+          {children}
+        </main>
       </body>
     </html>
   );

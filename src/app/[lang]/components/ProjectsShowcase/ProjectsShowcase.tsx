@@ -1,4 +1,3 @@
-import { url } from 'inspector';
 import Image from 'next/image';
 const projects = [
   {
@@ -45,15 +44,13 @@ const ProjectShowcase = () => {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex justify-center items-center"
+                className="flex justify-center items-center w-8 h-8"
               >
                 <Image
                   width={144}
                   height={144}
-                  src="/newTabIcon.svg"
+                  src="/newTab.webp"
                   alt="Visit"
-                  className="w-8 h-8"
-                  role="button"
                 />
               </a>
             </div>
