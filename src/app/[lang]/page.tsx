@@ -1,5 +1,4 @@
 import './styles.css';
-import Cursor from './components/CustomCursor/Cursor';
 import ScrollIndicator from './components/ScrollIndicator/ScrollIndicator';
 import ProjectShowcase from './components/ProjectsShowcase/ProjectsShowcase';
 import Footer from './components/Footer/Footer';
@@ -9,6 +8,7 @@ import { getDictionary } from '../../dictionaries';
 import { BlowoutText } from './components/BlowoutText/BlowoutText';
 import TypewriterSection from './components/TypewriterSection/TypewriterSection';
 import { Locale } from '@/i18n-config';
+import Header from './components/Header/Header';
 
 export default async function Page({
   params: { lang },
@@ -19,8 +19,8 @@ export default async function Page({
 
   return (
     <>
-      <Cursor />
-      <section className="bg-white text-black min-h-screen w-screen">
+      <section className="bg-white text-black min-h-screen w-screen relative">
+        <Header language={lang} />
         <BlowoutText dictionary={dictionary} />
       </section>
       <section className="min-h-screen w-screen">
