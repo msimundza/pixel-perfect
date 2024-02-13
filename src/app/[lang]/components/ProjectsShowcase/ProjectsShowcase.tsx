@@ -1,10 +1,12 @@
 import Image from 'next/image';
+import jimGymThumbnail from '/public/jimgym.webp';
+import newTabImage from '/public/newTab.svg';
 const projects = [
   {
     id: 1,
     name: 'Jim Gym',
     description: 'Najmodernija teretana u Hrvatskoj',
-    imageUrl: '/jimgym.webp',
+    imageUrl: jimGymThumbnail,
     url: 'https://pixelperfect.hr',
   },
 ];
@@ -31,7 +33,7 @@ const ProjectShowcase = () => {
               alt={project.name}
               className="w-full object-cover object-center overflow-auto"
             />
-            <div className="flex flex-wrap p-8">
+            <div className="flex flex-wrap p-8 place-items-center">
               <div className="grow">
                 <h3 className="sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-black">
                   {project.name}
@@ -46,12 +48,7 @@ const ProjectShowcase = () => {
                 rel="noopener noreferrer"
                 className="flex justify-center items-center w-8 h-8"
               >
-                <Image
-                  width={144}
-                  height={144}
-                  src="/newTab.webp"
-                  alt="Visit"
-                />
+                <Image width={144} height={144} src={newTabImage} alt="Visit" />
               </a>
             </div>
           </div>

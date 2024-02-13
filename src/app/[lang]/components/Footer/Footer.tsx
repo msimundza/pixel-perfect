@@ -4,6 +4,7 @@ import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { type ISourceOptions } from '@tsparticles/engine';
 import { loadSlim } from '@tsparticles/slim';
 import Image from 'next/image';
+import logo from '/public/logo.webp';
 
 const Footer: React.FC = () => {
   const [init, setInit] = useState(false);
@@ -102,7 +103,7 @@ const Footer: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
             <div>
               <Image
-                src="/logo.webp"
+                src={logo}
                 alt="Pixel Perfect logo"
                 width={150}
                 height={150}

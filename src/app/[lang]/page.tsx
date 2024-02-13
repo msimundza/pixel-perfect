@@ -8,11 +8,7 @@ import About from './components/About/About';
 import { getDictionary } from '../../dictionaries';
 import { BlowoutText } from './components/BlowoutText/BlowoutText';
 import TypewriterSection from './components/TypewriterSection/TypewriterSection';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Locale } from '@/i18n-config';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default async function Page({
   params: { lang },

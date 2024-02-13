@@ -13,6 +13,7 @@ export const BlowoutText = ({
     if (!CSS.supports('animation-timeline: scroll()')) {
       const scrub = 0.2;
       const name = document.querySelector('.test') as HTMLElement;
+      console.log(name);
       gsap
         .timeline()
         .to(name, {

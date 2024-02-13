@@ -1,7 +1,9 @@
 'use client';
 import Image from 'next/image';
 import Typewriter from '../Typewriter';
+import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
+import typeWriterBgImage from '/public/bg.webp';
 
 const TypewriterSection = () => {
   useGSAP(() => {
@@ -46,7 +48,7 @@ const TypewriterSection = () => {
   return (
     <div>
       <div className="picture-wrap">
-        <Image fill src="/bg.webp" alt="background image" />
+        <Image fill src={typeWriterBgImage} alt="background image" />
       </div>
       <div className="section__content">
         <p>
