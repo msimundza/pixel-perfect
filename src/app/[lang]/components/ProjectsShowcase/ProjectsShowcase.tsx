@@ -1,22 +1,30 @@
 import Image from 'next/image';
 import jimGymThumbnail from '/public/jimgym.webp';
 import newTabImage from '/public/newTab.svg';
-const projects = [
-  {
-    id: 1,
-    name: 'Jim Gym',
-    description: 'Najmodernija teretana u Hrvatskoj',
-    imageUrl: jimGymThumbnail,
-    url: 'https://pixelperfect.hr',
-  },
-];
+import { getDictionary } from '@/dictionaries';
 
-const ProjectShowcase = () => {
+const ProjectShowcase = ({
+  dictionary,
+}: {
+  dictionary: Awaited<ReturnType<typeof getDictionary>>;
+}) => {
+  const { title, project1Title, project1Description, yourProject } =
+    dictionary.projects;
+  const projects = [
+    {
+      id: 1,
+      name: project1Title,
+      description: project1Description,
+      imageUrl: jimGymThumbnail,
+      url: 'https://pixelperfect.hr',
+    },
+  ];
+
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto container">
       <div className="text-center mb-12">
         <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold text-white">
-          Projekti
+          {title}
         </h2>
       </div>
       <div className="grid grid-cols-1 gap-8">
@@ -69,7 +77,7 @@ const ProjectShowcase = () => {
             />
           </svg>
           <h3 className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-gray-800">
-            Vaš projekt može biti ovdje
+            {yourProject}
           </h3>
         </div>
       </div>

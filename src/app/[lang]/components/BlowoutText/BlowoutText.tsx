@@ -2,13 +2,8 @@
 import React from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
-import { getDictionary } from '@/dictionaries';
 
-export const BlowoutText = ({
-  dictionary,
-}: {
-  dictionary: Awaited<ReturnType<typeof getDictionary>>;
-}) => {
+export const BlowoutText = () => {
   useGSAP(() => {
     if (!CSS.supports('animation-timeline: scroll()')) {
       const scrub = 0.2;
@@ -51,7 +46,7 @@ export const BlowoutText = ({
     <div className="section__content overflow-hidden">
       <svg className="test text-xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
         <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle">
-          Pixel Perfect {dictionary.abc}
+          Pixel Perfect
         </text>
       </svg>
     </div>

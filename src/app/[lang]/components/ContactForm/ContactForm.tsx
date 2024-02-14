@@ -2,22 +2,44 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import './ContactForm.css';
+import { getDictionary } from '@/dictionaries';
 
-export const ContactForm = () => {
+export const ContactForm = ({
+  dictionary,
+}: {
+  dictionary: Awaited<ReturnType<typeof getDictionary>>;
+}) => {
   const [firstName, setFirstName] = useState('');
-  const [surname, setSurname] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
+  const {
+    firstName: firstNamePlaceholder,
+    lastName: lastNamePlaceholder,
+    telephone,
+    message: messagePlaceholder,
+    title,
+    button,
+    email: emailPlaceholder,
+    required,
+  } = dictionary.contact;
+
+  const {
+    firstName: firstNameValidationMessage,
+    lastName: lastNameValidationMessage,
+    email: emailValidationMessage,
+    message: messageValidationMessage,
+  } = dictionary.contact.formValidationMessages;
 
   useEffect(() => {
     const isFormValid =
       firstName.trim() !== '' &&
-      surname.trim() !== '' &&
+      lastName.trim() !== '' &&
       email.trim() !== '' &&
       message.trim() !== '';
     setIsDisabled(!isFormValid);
-  }, [firstName, surname, email, message]);
+  }, [firstName, lastName, email, message]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -26,28 +48,28 @@ export const ContactForm = () => {
       return;
     }
     // Handle valid form submission logic here
-    console.log('Form Submitted', { firstName, surname, email, message });
+    console.log('Form Submitted', { firstName, lastName, email, message });
   };
 
   return (
     <form
-      className="text-black p-10 max-w-4xl mx-auto mt-10 rounded text-center"
+      className="container text-black max-w-4xl mx-auto mt-10 rounded text-center"
       onSubmit={handleSubmit}
     >
       <h2 className="mb-10 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold uppercase">
-        Kontaktirajte me
+        {title}
       </h2>
       <div className="grid gap-6 mb-6 lg:grid-cols-2">
         <input
           type="text"
           name="firstName"
-          placeholder="Ime*"
+          placeholder={firstNamePlaceholder}
           className="bg-white shadow-button focus:shadow-sm transition-shadow border-2 border-black p-3 rounded outline-none"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           required
           onInvalid={(e: React.InvalidEvent<HTMLInputElement>) =>
-            e.target.setCustomValidity('Molimo unesite vaše ime.')
+            e.target.setCustomValidity(firstNameValidationMessage)
           }
           onInput={(e: React.FormEvent<HTMLInputElement>) =>
             e.currentTarget.setCustomValidity('')
@@ -55,13 +77,13 @@ export const ContactForm = () => {
         />
         <input
           type="text"
-          name="surname"
-          placeholder="Prezime*"
+          name="lastName"
+          placeholder={lastNamePlaceholder}
           className="bg-white shadow-button focus:shadow-sm transition-shadow  border-2 border-black p-3 rounded outline-none"
-          value={surname}
-          onChange={(e) => setSurname(e.target.value)}
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
           onInvalid={(e: React.InvalidEvent<HTMLInputElement>) =>
-            e.target.setCustomValidity('Molimo unesite vaše prezime.')
+            e.target.setCustomValidity(lastNameValidationMessage)
           }
           onInput={(e: React.FormEvent<HTMLInputElement>) =>
             e.currentTarget.setCustomValidity('')
@@ -72,12 +94,12 @@ export const ContactForm = () => {
         <input
           type="email"
           name="email"
-          placeholder="Email*"
+          placeholder={emailPlaceholder}
           className="bg-white shadow-button focus:shadow-sm transition-shadow  border-2 border-black p-3 rounded outline-none"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           onInvalid={(e: React.InvalidEvent<HTMLInputElement>) =>
-            e.target.setCustomValidity('Molimo unesite vašu email adresu.')
+            e.target.setCustomValidity(emailValidationMessage)
           }
           onInput={(e: React.FormEvent<HTMLInputElement>) =>
             e.currentTarget.setCustomValidity('')
@@ -86,20 +108,20 @@ export const ContactForm = () => {
         <input
           type="tel"
           name="phone"
-          placeholder="Telefon"
+          placeholder={telephone}
           className="bg-white shadow-button focus:shadow-sm transition-shadow  border-2 border-black p-3 rounded outline-none"
         />
       </div>
       <div className="mb-6">
         <textarea
           name="message"
-          placeholder="Poruka"
+          placeholder={messagePlaceholder}
           className="bg-white shadow-button focus:shadow-sm transition-shadow border-2 border-black p-3 rounded outline-none w-full"
           rows={4}
           required
           onChange={(e) => setMessage(e.target.value)}
           onInvalid={(e: React.InvalidEvent<HTMLTextAreaElement>) =>
-            e.target.setCustomValidity('Molimo unesite vašu poruku.')
+            e.target.setCustomValidity(messageValidationMessage)
           }
           onInput={(e: React.FormEvent<HTMLTextAreaElement>) =>
             e.currentTarget.setCustomValidity('')
@@ -114,7 +136,7 @@ export const ContactForm = () => {
           { 'opacity-50 cursor-not-allowed pointer-events-none': isDisabled }
         )}
       >
-        <span className="ml-2">Pošalji</span>
+        <span className="ml-2"> {button}</span>
         <span className="-mr-10">
           <svg
             width="66px"
@@ -150,7 +172,7 @@ export const ContactForm = () => {
           </svg>
         </span>
       </button>
-      <div className="text-black flex mt-10">* Obavezna polja</div>
+      <div className="text-black flex mt-10">{required}</div>
     </form>
   );
 };

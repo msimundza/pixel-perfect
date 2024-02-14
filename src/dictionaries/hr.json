@@ -1,3 +1,50 @@
 {
-  "abc": "dodaj"
+  "typewriter": {
+    "line1": "Vizualno Savršene Web Stranice.",
+    "line2": "Digitalna Rješenja gdje Svaki Piksel ima Svoje Mjesto.",
+    "line3": "Preciznost, Dizajn, Performanse.",
+    "line4": "Sinonim za Digitalnu Kreativnost.",
+    "line5": "Dizanje Vaše Online Prisutnosti, Piksel po Piksel.",
+    "line6": "Pretvaramo Ideje u Digitalna Remek-Djela."
+  },
+  "aboutMe": {
+    "title1": "O meni",
+    "title2": "Moja misija",
+    "title3": "Nudim",
+    "title4": "Zašto pixel perfect?",
+    "value1": "Strastveni web developer s preko 10 godina iskustva u IT sektoru, od rada sa Start-up projektima do rada s velikim multimilijunskim tvrtkama.",
+    "value21": "Pomaganje poduzećima da ostvare svoj puni online potencijal kroz detaljnu analizu zahtjeva, strateško planiranje i primjenu najnovijih tehnologija u dizajnu i razvoju web stranica i/ili aplikacija.",
+    "value22": "Osigurati da Vaša online prisutnost ne samo da ostane relevantna, već i da kontinuirano raste i prilagođava se promjenjivom digitalnom pejzažu.",
+    "value31": "Izrada personaliziranih web stranica i/ili aplikacije koje točno odgovaraju potrebama i ciljevima svakog klijenta.",
+    "value32": "Održavanje i modernizacija postojećih web stranica i/ili aplikacija.",
+    "value41": "Odabir Pixel Perfect obrta za Vaše web rješenje znači posvećenost detaljima, povjerenje u individualni pristup i strast prema web tehnologijama.",
+    "value42": "Veselim se prilici da zajedno radimo na ostvarivanju vaše vizije i postavljanju vašeg poslovanja na putu prema online uspjehu."
+  },
+  "projects": {
+    "title": "Projekti",
+    "project1Title": "JimGym",
+    "project1Description": "Najmodernija teretana u Hrvatskoj",
+    "yourProject": "Vaš projekt može biti sljedeći!"
+  },
+  "contact": {
+    "title": "Kontaktirajte me",
+    "button": "Pošalji",
+    "firstName": "Ime*",
+    "lastName": "Prezime*",
+    "email": "Email*",
+    "telephone": "Telefon",
+    "message": "Poruka*",
+    "required": "Polja označena sa * su obavezna",
+    "formValidationMessages": {
+      "firstName": "Molimo unesite vaše ime.",
+      "lastName": "Molimo unesite vaše prezime.",
+      "email": "Molimo unesite vašu email adresu.",
+      "message": "Molimo unesite vašu poruku."
+    }
+  },
+  "footer": {
+    "quickNavigation": "Brza navigacija",
+    "stayUpdated": "Budite u toku",
+    "trademark": "Pixel Perfect. Sva prava pridržana."
+  }
 }

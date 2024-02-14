@@ -5,8 +5,13 @@ import { type ISourceOptions } from '@tsparticles/engine';
 import { loadSlim } from '@tsparticles/slim';
 import Image from 'next/image';
 import logo from '/public/logo.webp';
+import { getDictionary } from '@/dictionaries';
 
-const Footer: React.FC = () => {
+const Footer = ({
+  dictionary,
+}: {
+  dictionary: Awaited<ReturnType<typeof getDictionary>>;
+}) => {
   const [init, setInit] = useState(false);
 
   useEffect(() => {
@@ -17,6 +22,7 @@ const Footer: React.FC = () => {
     });
   }, []);
 
+  const { quickNavigation, stayUpdated, trademark } = dictionary.footer;
   const options: ISourceOptions = useMemo(
     () => ({
       fpsLimit: 120,
@@ -111,14 +117,14 @@ const Footer: React.FC = () => {
               />
             </div>
             <div>
-              <h2 className="text-xl font-semibold">Brza navigacija</h2>
+              <h2 className="text-xl font-semibold">{quickNavigation}</h2>
               <ul className="mt-2">
                 <li>
                   <a
                     href="#about"
                     className="text-lg hover:text-gray-300 transition-colors duration-300"
                   >
-                    O meni
+                    {dictionary.aboutMe.title1}
                   </a>
                 </li>
                 <li>
@@ -126,7 +132,7 @@ const Footer: React.FC = () => {
                     href="#projects"
                     className="text-lg hover:text-gray-300 transition-colors duration-300"
                   >
-                    Projekti
+                    {dictionary.projects.title}
                   </a>
                 </li>
                 <li>
@@ -134,13 +140,13 @@ const Footer: React.FC = () => {
                     href="#contact-me"
                     className="text-lg hover:text-gray-300 transition-colors duration-300"
                   >
-                    Kontaktirajte me
+                    {dictionary.contact.title}
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h2 className="text-xl font-semibold">Budite u toku</h2>
+              <h2 className="text-xl font-semibold">{stayUpdated}</h2>
               <div className="mt-2">
                 <ul className="mt-2">
                   <li>
@@ -168,7 +174,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
           <div className="text-center text-gray-400 text-sm mt-8 md:mt-12">
-            © {new Date().getFullYear()} Pixel Perfect. All rights reserved.
+            © {new Date().getFullYear()} {trademark}
           </div>
         </div>
       </footer>

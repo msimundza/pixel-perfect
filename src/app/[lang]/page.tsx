@@ -21,28 +21,28 @@ export default async function Page({
     <>
       <section className="bg-white text-black min-h-screen w-screen relative">
         <Header language={lang} />
-        <BlowoutText dictionary={dictionary} />
+        <BlowoutText />
       </section>
       <section className="min-h-screen w-screen">
-        <TypewriterSection />
+        <TypewriterSection dictionary={dictionary} />
       </section>
       <section id="about" className="min-h-screen w-screen bg-white text-black">
-        <About />
+        <About dictionary={dictionary} />
       </section>
       <section
         className="min-h-screen w-screen bg-black py-12 px-4"
         id="projects"
       >
-        <ProjectShowcase />
+        <ProjectShowcase dictionary={dictionary} />
       </section>
       <section
         className="min-h-screen w-screen flex place-items-center bg-white py-12 px-4"
         id="contact-me"
       >
-        <ContactForm />
+        <ContactForm dictionary={dictionary} />
       </section>
       <ScrollIndicator />
-      <Footer />
+      <Footer dictionary={dictionary} />
     </>
   );
 }

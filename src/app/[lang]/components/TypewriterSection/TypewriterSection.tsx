@@ -4,8 +4,13 @@ import Typewriter from '../Typewriter';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import typeWriterBgImage from '/public/bg.webp';
+import { getDictionary } from '@/dictionaries';
 
-const TypewriterSection = () => {
+const TypewriterSection = ({
+  dictionary,
+}: {
+  dictionary: Awaited<ReturnType<typeof getDictionary>>;
+}) => {
   useGSAP(() => {
     if (!CSS.supports('animation-timeline: scroll()')) {
       const scrub = 0.2;
@@ -38,12 +43,7 @@ const TypewriterSection = () => {
     }
   });
 
-  const options = [
-    'Vizualno Savršene Web Stranice.',
-    'Digitalna Rješenja gdje Svaki Piksel ima Svoje Mjesto.',
-    'Preciznost, Dizajn, Performanse.',
-    'Sinonim za Digitalnu Kreativnost.',
-  ];
+  const options = Object.values(dictionary.typewriter);
 
   return (
     <div>
