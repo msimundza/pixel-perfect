@@ -13,11 +13,12 @@ export const ContactForm = ({
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [telephone, setTelephone] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
   const {
     firstName: firstNamePlaceholder,
     lastName: lastNamePlaceholder,
-    telephone,
+    telephone: telephonePlaceholder,
     message: messagePlaceholder,
     title,
     button,
@@ -41,14 +42,33 @@ export const ContactForm = ({
     setIsDisabled(!isFormValid);
   }, [firstName, lastName, email, message]);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!event.currentTarget.checkValidity()) {
       console.error('Form is invalid');
       return;
     }
-    // Handle valid form submission logic here
-    console.log('Form Submitted', { firstName, lastName, email, message });
+
+    const form = new FormData(event.currentTarget);
+    const formData = Object.fromEntries(form.entries());
+
+    try {
+      const res = await fetch('/email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        alert('Email sent successfully');
+      } else {
+        // Handle server errors or invalid responses
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending email', error);
+    }
   };
 
   return (
@@ -108,7 +128,9 @@ export const ContactForm = ({
         <input
           type="tel"
           name="phone"
-          placeholder={telephone}
+          placeholder={telephonePlaceholder}
+          value={telephone}
+          onChange={(e) => setTelephone(e.target.value)}
           className="bg-white shadow-button focus:shadow-sm transition-shadow  border-2 border-black p-3 rounded outline-none"
         />
       </div>
