@@ -1,9 +1,9 @@
 // components/Spinner.tsx
 import React from 'react';
-import './Spinner.css'; // We'll create this CSS module next
+import './Spinner.css';
 
-const Spinner = () => {
-  return <div className="spinner"></div>;
+const Spinner = ({ className }: { className?: string }) => {
+  return <div className={`spinner ${className || ''}`.trim()}></div>;
 };
 
 export default Spinner;

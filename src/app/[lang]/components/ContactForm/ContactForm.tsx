@@ -221,17 +221,23 @@ export const ContactForm = ({
             disabled={isDisabled || isloading}
             type="submit"
             className={classNames(
-              'cta flex w-full  place-items-center pl-12 py-2.5 text-black font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl border-2 border-black shadow-button -skew-x-12 no-outline no-underline mx-auto mt-2 hover:shadow transition-shadow rounded',
+              'cta flex w-full place-items-center pl-12 py-2.5 text-black font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl border-2 border-black shadow-button -skew-x-12 no-outline no-underline mx-auto mt-2 hover:shadow transition-shadow rounded',
               {
                 'opacity-50 cursor-not-allowed pointer-events-none':
                   isDisabled || isloading,
               }
             )}
           >
-            <span className="ml-2"> {button}</span>
-            <span className="ml-2 -mr-10">
-              {isloading ? <Spinner /> : <ArrowsButton />}
-            </span>
+            {isloading ? (
+              <Spinner className="-ml-12" />
+            ) : (
+              <>
+                <span className="ml-2"> {button}</span>
+                <span className="ml-2 -mr-10">
+                  <ArrowsButton />
+                </span>
+              </>
+            )}
           </button>
         </div>
         <div className="text-black flex mt-10">{required}</div>
