@@ -6,6 +6,8 @@ import { getDictionary } from '@/dictionaries';
 import RecaptchaScript from '../Recaptcha/Recaptcha';
 import ArrowsButton from '/public/arrowsButton.svg';
 import Spinner from '../Spinner/Spinner';
+import { Slide, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ContactForm = ({
   dictionary,
@@ -106,7 +108,17 @@ export const ContactForm = ({
           window.grecaptcha.reset();
         }
 
-        alert('Email sent successfully');
+        toast.success('Email sent successfully!', {
+          position: 'top-right',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark',
+          transition: Slide,
+        });
       } else {
         // Handle server errors or invalid responses
         throw new Error('Failed to send message');
@@ -242,6 +254,7 @@ export const ContactForm = ({
         </div>
         <div className="text-black flex mt-10">{required}</div>
       </form>
+      <ToastContainer />
     </>
   );
 };
