@@ -15,7 +15,9 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  const { firstName, lastName, email, message, phone } = await req.json();
+  const { firstName, lastName, email, message, phone, recaptchaToken } =
+    await req.json();
+  console.log(recaptchaToken);
 
   // Configure your transporter
   let transporter = nodemailer.createTransport({
