@@ -5,6 +5,22 @@ import nodemailer from 'nodemailer';
 
 export const dynamic = 'force-dynamic'; // defaults to auto
 
+// Helper function to verify reCAPTCHA token
+async function verifyRecaptchaToken(token: string) {
+  const secretKey = process.env.RECAPTCHA_SERVER_SECRET_KEY; // Make sure to add this to your environment variables
+  const response = await fetch(
+    `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    }
+  );
+  const data = await response.json();
+  return data.success;
+}
+
 export async function POST(req: NextRequest) {
   if (req.method !== 'POST') {
     return new Response(JSON.stringify({ error: 'Method not allowed' }), {
@@ -17,7 +33,22 @@ export async function POST(req: NextRequest) {
 
   const { firstName, lastName, email, message, phone, recaptchaToken } =
     await req.json();
-  console.log(recaptchaToken);
+
+  const isCaptchaValid = await verifyRecaptchaToken(recaptchaToken);
+  if (!isCaptchaValid) {
+    // If reCAPTCHA validation fails, return an error response
+    return new Response(
+      JSON.stringify({
+        error: 'reCAPTCHA verification failed. Are you a robot?',
+      }),
+      {
+        status: 400,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  }
 
   // Configure your transporter
   let transporter = nodemailer.createTransport({

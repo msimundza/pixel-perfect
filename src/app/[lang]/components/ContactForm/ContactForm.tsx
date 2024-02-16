@@ -16,6 +16,7 @@ export const ContactForm = ({
   const [message, setMessage] = useState('');
   const [telephone, setTelephone] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
+  const [recaptchaToken, setRecaptchaToken] = useState('');
   const {
     firstName: firstNamePlaceholder,
     lastName: lastNamePlaceholder,
@@ -35,18 +36,19 @@ export const ContactForm = ({
   } = dictionary.contact.formValidationMessages;
 
   useEffect(() => {
-    const script = document.createElement('script');
+    // Define the reCAPTCHA callback functions and attach them to the window object
+    window.onRecaptchaSuccess = (token: string) => {
+      setRecaptchaToken(token);
+    };
 
-    script.src = `https://www.google.com/recaptcha/api.js?render=${process.env.RECAPTCHA_SITE_KEY}`;
-    script.addEventListener('load', () => {
-      console.log('Script loaded');
-    });
-    document.body.appendChild(script);
+    window.onRecaptchaExpired = () => {
+      setRecaptchaToken('');
+    };
 
     return () => {
-      script.removeEventListener('load', () => {
-        console.log('Script event listener on load removed');
-      });
+      // Remove the script and clean up the global functions
+      delete window.onRecaptchaSuccess;
+      delete window.onRecaptchaExpired;
     };
   }, []);
 
@@ -55,9 +57,10 @@ export const ContactForm = ({
       firstName.trim() !== '' &&
       lastName.trim() !== '' &&
       email.trim() !== '' &&
-      message.trim() !== '';
+      message.trim() !== '' &&
+      recaptchaToken.trim() !== '';
     setIsDisabled(!isFormValid);
-  }, [firstName, lastName, email, message]);
+  }, [firstName, lastName, email, message, recaptchaToken]);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -67,12 +70,12 @@ export const ContactForm = ({
       return;
     }
 
-    const recaptchaToken = grecaptcha.getResponse();
-
-    const form = new FormData(event.currentTarget);
-    const data = Object.fromEntries(form.entries());
     const formData = {
-      ...data,
+      firstName,
+      lastName,
+      email,
+      message,
+      phone: telephone,
       recaptchaToken,
     };
 
@@ -84,7 +87,21 @@ export const ContactForm = ({
         },
         body: JSON.stringify(formData),
       });
+
       if (res.ok) {
+        // Email sent successfully, reset form fields and reCAPTCHA
+        setFirstName('');
+        setLastName('');
+        setEmail('');
+        setMessage('');
+        setTelephone('');
+        setRecaptchaToken(''); // Clear the reCAPTCHA token state
+
+        // Reset the reCAPTCHA widget
+        if (window.grecaptcha) {
+          window.grecaptcha.reset();
+        }
+
         alert('Email sent successfully');
       } else {
         // Handle server errors or invalid responses
@@ -150,6 +167,7 @@ export const ContactForm = ({
             onInput={(e: React.FormEvent<HTMLInputElement>) =>
               e.currentTarget.setCustomValidity('')
             }
+            autoComplete="email"
           />
           <input
             type="tel"
@@ -158,6 +176,7 @@ export const ContactForm = ({
             value={telephone}
             onChange={(e) => setTelephone(e.target.value)}
             className="bg-white shadow-button focus:shadow-sm transition-shadow  border-2 border-black p-3 rounded outline-none"
+            autoComplete="tel"
           />
         </div>
         <div className="mb-6">
@@ -167,6 +186,7 @@ export const ContactForm = ({
             className="bg-white shadow-button focus:shadow-sm transition-shadow border-2 border-black p-3 rounded outline-none w-full"
             rows={4}
             required
+            value={message}
             onChange={(e) => setMessage(e.target.value)}
             onInvalid={(e: React.InvalidEvent<HTMLTextAreaElement>) =>
               e.target.setCustomValidity(messageValidationMessage)
@@ -187,7 +207,9 @@ export const ContactForm = ({
             }}
             className="g-recaptcha"
             data-theme="dark"
-            data-sitekey={process.env.RECAPTCHA_SITE_KEY}
+            data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+            data-callback="onRecaptchaSuccess"
+            data-expired-callback="onRecaptchaExpired"
           ></div>
           <button
             disabled={isDisabled}

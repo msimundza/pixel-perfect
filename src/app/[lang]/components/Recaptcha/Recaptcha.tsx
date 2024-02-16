@@ -7,6 +7,9 @@ const RecaptchaScript = () => {
     script.async = true;
     script.defer = true;
     document.body.appendChild(script);
+    script.addEventListener('load', () => {
+      console.log('Script loaded');
+    });
 
     return () => {
       document.body.removeChild(script);
