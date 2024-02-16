@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import jimGymThumbnail from '/public/jimgym.webp';
-import newTabImage from '/public/newTab.svg';
+import NewTabImage from '/public/newTab.svg';
 import { getDictionary } from '@/dictionaries';
 
 const ProjectShowcase = ({
@@ -56,7 +56,7 @@ const ProjectShowcase = ({
                 rel="noopener noreferrer"
                 className="flex justify-center items-center w-8 h-8"
               >
-                <Image width={144} height={144} src={newTabImage} alt="Visit" />
+                <NewTabImage />
               </a>
             </div>
           </div>

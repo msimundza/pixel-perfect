@@ -1,6 +1,5 @@
 // app/contact/api/send.tsx
 import type { NextRequest } from 'next/server';
-import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export const dynamic = 'force-dynamic'; // defaults to auto

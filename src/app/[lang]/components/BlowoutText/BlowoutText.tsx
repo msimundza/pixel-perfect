@@ -7,7 +7,7 @@ export const BlowoutText = () => {
   useGSAP(() => {
     if (!CSS.supports('animation-timeline: scroll()')) {
       const scrub = 0.2;
-      const name = document.querySelector('.test') as HTMLElement;
+      const name = document.querySelector('.blowout-text') as HTMLElement;
       gsap
         .timeline()
         .to(name, {
@@ -43,7 +43,7 @@ export const BlowoutText = () => {
 
   return (
     <div className="section__content overflow-hidden">
-      <svg className="test text-xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+      <svg className="blowout-text text-xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
         <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle">
           Pixel Perfect
         </text>

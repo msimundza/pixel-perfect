@@ -42,7 +42,7 @@ section:nth-of-type(2) p {
   pointer-events: none;
 }
 
-section:nth-of-type(1) svg {
+section:nth-of-type(1) .blowout-text {
   --opacity: 1;
   font-weight: 600;
   font-size: clamp(2rem, 10vw + 1rem, 10rem);
@@ -97,7 +97,7 @@ section:nth-of-type(1) {
     view-timeline-name: --section;
   }
 
-  section:nth-of-type(1) svg {
+  section:nth-of-type(1) .blowout-text {
     transform: unset;
     translate: -50% -50%;
     animation: blow-out both ease-in, fade-in both ease-in;
