@@ -16,7 +16,7 @@ const ProjectShowcase = ({
       name: project1Title,
       description: project1Description,
       imageUrl: jimGymThumbnail,
-      url: 'https://pixelperfect.hr',
+      url: 'https://fe-jimgym-nextjs.vercel.app',
     },
   ];
 
