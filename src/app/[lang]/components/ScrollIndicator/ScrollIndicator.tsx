@@ -3,27 +3,26 @@ import React, { useState, useEffect } from 'react';
 import './ScrollIndicator.css';
 
 const ScrollIndicator: React.FC = () => {
-  const [isVisible, setIsVisible] = useState<boolean>(true);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
-      const distanceToBottom =
-        document.body.scrollHeight - window.innerHeight - window.scrollY;
-      const threshold = 100;
+      console.log('scrolling');
+      const bottom = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPosition =
+        window.scrollY || document.documentElement.scrollTop;
+      const buffer = 100;
 
-      if (distanceToBottom < threshold) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
+      setIsVisible(bottom - scrollPosition > buffer);
     };
+    console.log('scroll indicator mounted');
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return (
-    <div className={`scroll-indicator ${!isVisible ? 'hidden' : ''}`}>
+  return isVisible ? (
+    <div className="scroll-indicator">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="40"
@@ -39,7 +38,7 @@ const ScrollIndicator: React.FC = () => {
         />
       </svg>
     </div>
-  );
+  ) : null;
 };
 
 export default ScrollIndicator;
