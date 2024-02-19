@@ -41,7 +41,7 @@ const ProjectShowcase = ({
               alt={project.name}
               className="w-full object-cover object-center overflow-auto"
             />
-            <div className="flex flex-wrap p-8 place-items-center">
+            <div className="flex p-8 place-items-center">
               <div className="grow">
                 <h3 className="sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-black">
                   {project.name}
