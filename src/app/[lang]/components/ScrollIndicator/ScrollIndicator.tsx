@@ -1,24 +1,36 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, RefObject } from 'react';
 import './ScrollIndicator.css';
 
-const ScrollIndicator: React.FC = () => {
+interface ScrollIndicatorProps {
+  scrollContainerRef: RefObject<HTMLDivElement>;
+}
+
+const ScrollIndicator = ({ scrollContainerRef }: ScrollIndicatorProps) => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
-      console.log('scrolling');
-      const bottom = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPosition =
-        window.scrollY || document.documentElement.scrollTop;
+      const container = scrollContainerRef.current;
+      if (!container) return;
+
+      const bottom = container.scrollHeight - container.clientHeight;
+      const scrollPosition = container.scrollTop;
       const buffer = 100;
 
       setIsVisible(bottom - scrollPosition > buffer);
     };
-    console.log('scroll indicator mounted');
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const scrollableDiv = scrollContainerRef.current;
+    if (scrollableDiv) {
+      scrollableDiv.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      if (scrollableDiv) {
+        scrollableDiv.removeEventListener('scroll', handleScroll);
+      }
+    };
   }, []);
 
   return isVisible ? (

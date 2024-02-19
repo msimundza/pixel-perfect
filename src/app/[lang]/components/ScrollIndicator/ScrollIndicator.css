@@ -11,7 +11,7 @@
 .scroll-indicator {
   position: fixed;
   bottom: 20px;
-  left: 50%;
+  left: 49%;
   transform: translateX(-50%);
   animation: jump 1s infinite;
   z-index: 1000;

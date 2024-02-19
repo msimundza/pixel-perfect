@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import Cursor from '../CustomCursor/Cursor';
 import Header from '../Header/Header';
 import { BlowoutText } from '../BlowoutText/BlowoutText';
@@ -19,37 +19,10 @@ export const Main = ({
   dictionary: Awaited<ReturnType<typeof getDictionary>>;
   lang: Locale;
 }) => {
-  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (containerRef.current) {
-        const container = containerRef.current;
-        const scrollPosition = container.scrollTop;
-        const containerHeight = container.scrollHeight - container.clientHeight;
-
-        const pixelsFromBottom = 100;
-
-        if (containerHeight - scrollPosition <= pixelsFromBottom) {
-          setShowScrollIndicator(false);
-        } else {
-          setShowScrollIndicator(true);
-        }
-      }
-    };
-
-    const container = containerRef.current;
-    container!.addEventListener('scroll', handleScroll);
-
-    return () => container!.removeEventListener('scroll', handleScroll);
-  }, []);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div
-      ref={containerRef}
-      className="overflow-auto overflow-x-hidden h-screen"
-    >
+    <div ref={scrollContainerRef} className="overflow-x-hidden h-screen">
       <Cursor />
       <section className="bg-white text-black min-h-screen w-screen relative">
         <Header language={lang} />
@@ -74,7 +47,7 @@ export const Main = ({
         <ContactForm dictionary={dictionary} />
       </section>
       <Footer dictionary={dictionary} />
-      {showScrollIndicator && <ScrollIndicator />}
+      <ScrollIndicator scrollContainerRef={scrollContainerRef} />
     </div>
   );
 };
