@@ -11,6 +11,9 @@ import Footer from '../Footer/Footer';
 import ScrollIndicator from '../ScrollIndicator/ScrollIndicator';
 import { getDictionary } from '@/dictionaries';
 import { Locale } from '@/i18n-config';
+import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 
 export const Main = ({
   dictionary,
@@ -20,6 +23,84 @@ export const Main = ({
   lang: Locale;
 }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    if (!CSS.supports('animation-timeline: scroll()')) {
+      const scrub = 0.2;
+      const name = document.querySelector('.blowout-text') as HTMLElement;
+      console.log(name);
+      gsap
+        .timeline()
+        .to(name, {
+          scrollTrigger: {
+            invalidateOnRefresh: true,
+            trigger: name.parentNode?.parentElement as Element,
+            scrub,
+            start: 'top top',
+            end: 'bottom top-=25%',
+          },
+          opacity: 1,
+        })
+        .to(
+          name,
+          {
+            scrollTrigger: {
+              invalidateOnRefresh: true,
+              trigger: name.parentNode as Element,
+              scrub,
+              start: 'top top',
+              end: 'bottom top',
+            },
+            keyframes: {
+              '0%': { background: 'transparent' },
+              '95%': { background: 'transparent' },
+              '100%': { z: '99vh', background: 'black' },
+            },
+          },
+          0
+        );
+      const p = document.querySelector(
+        'section:nth-of-type(2) p'
+      ) as HTMLElement;
+      gsap
+        .timeline()
+        .to(p, {
+          opacity: 1,
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: p.parentNode!.parentNode as Element,
+            scrub,
+            start: 'top bottom',
+            end: 'top 50%',
+          },
+        })
+        .to(p, {
+          opacity: 0,
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: p.parentNode!.parentNode as Element,
+            scrub,
+            start: 'bottom bottom',
+            end: 'bottom 50%',
+          },
+        });
+      const scaleUpBoxes = gsap.utils.toArray('.element-scale-up');
+      scaleUpBoxes.forEach((scaleUpBox: any) => {
+        gsap.to(scaleUpBox, {
+          scrollTrigger: {
+            trigger: scaleUpBox,
+            scrub: true,
+            start: 'top bottom', // when the bottom of the trigger hits the bottom of the viewport
+            end: 'center center', // end after triggers center scrolls past center of the viewport
+          },
+          keyframes: {
+            '0%': { transform: 'scale(0.8)', opacity: 0 },
+            '100%': { transform: 'scale(1)', opacity: 1 },
+          },
+        });
+      });
+    }
+  });
 
   return (
     <div ref={scrollContainerRef} className="overflow-x-hidden h-screen">

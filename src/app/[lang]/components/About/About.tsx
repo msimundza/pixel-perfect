@@ -1,6 +1,4 @@
 'use client';
-import { gsap } from 'gsap';
-import { useGSAP } from '@gsap/react';
 import { getDictionary } from '@/dictionaries';
 
 const About = ({
@@ -8,26 +6,6 @@ const About = ({
 }: {
   dictionary: Awaited<ReturnType<typeof getDictionary>>;
 }) => {
-  useGSAP(() => {
-    if (!CSS.supports('animation-timeline: scroll()')) {
-      const scaleUpBoxes = gsap.utils.toArray('.element-scale-up');
-      scaleUpBoxes.forEach((scaleUpBox: any) => {
-        gsap.to(scaleUpBox, {
-          scrollTrigger: {
-            trigger: scaleUpBox,
-            scrub: true,
-            start: 'top bottom', // when the bottom of the trigger hits the bottom of the viewport
-            end: 'center center', // end after triggers center scrolls past center of the viewport
-          },
-          keyframes: {
-            '0%': { transform: 'scale(0.8)', opacity: 0 },
-            '100%': { transform: 'scale(1)', opacity: 1 },
-          },
-        });
-      });
-    }
-  });
-
   const {
     title1,
     title2,
