@@ -101,7 +101,6 @@ export const Main = ({
             scrub,
             start: 'top bottom',
             end: 'top 70%',
-            markers: true,
           },
         })
         .to(pictureWrap, {
@@ -113,7 +112,6 @@ export const Main = ({
             scrub,
             start: 'bottom bottom',
             end: 'bottom 70%',
-            markers: true,
           },
         });
 
