@@ -25,16 +25,17 @@ export const Main = ({
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
+
     if (!CSS.supports('animation-timeline: scroll()')) {
       const scrub = 0.2;
       const name = document.querySelector('.blowout-text') as HTMLElement;
-      console.log(name);
       gsap
         .timeline()
         .to(name, {
           scrollTrigger: {
+            scroller: scrollContainerRef.current,
             invalidateOnRefresh: true,
-            trigger: name.parentNode?.parentElement as Element,
+            trigger: name.parentNode as Element,
             scrub,
             start: 'top top',
             end: 'bottom top-=25%',
@@ -45,6 +46,7 @@ export const Main = ({
           name,
           {
             scrollTrigger: {
+              scroller: scrollContainerRef.current,
               invalidateOnRefresh: true,
               trigger: name.parentNode as Element,
               scrub,
@@ -68,7 +70,8 @@ export const Main = ({
           opacity: 1,
           immediateRender: false,
           scrollTrigger: {
-            trigger: p.parentNode!.parentNode as Element,
+            scroller: scrollContainerRef.current,
+            trigger: p.parentNode?.parentNode as Element,
             scrub,
             start: 'top bottom',
             end: 'top 50%',
@@ -78,16 +81,45 @@ export const Main = ({
           opacity: 0,
           immediateRender: false,
           scrollTrigger: {
-            trigger: p.parentNode!.parentNode as Element,
+            scroller: scrollContainerRef.current,
+            trigger: p.parentNode?.parentNode as Element,
             scrub,
             start: 'bottom bottom',
             end: 'bottom 50%',
           },
         });
+
+      const pictureWrap = document.querySelector('.picture-wrap');
+      gsap
+        .timeline()
+        .to(pictureWrap, {
+          opacity: 1,
+          immediateRender: false,
+          scrollTrigger: {
+            scroller: scrollContainerRef.current,
+            trigger: pictureWrap?.parentNode as Element,
+            scrub,
+            start: 'top bottom',
+            end: 'top 50%',
+          },
+        })
+        .to(pictureWrap, {
+          opacity: 0,
+          immediateRender: false,
+          scrollTrigger: {
+            scroller: scrollContainerRef.current,
+            trigger: pictureWrap?.parentNode as Element,
+            scrub,
+            start: 'bottom bottom',
+            end: 'bottom 50%',
+          },
+        });
+
       const scaleUpBoxes = gsap.utils.toArray('.element-scale-up');
       scaleUpBoxes.forEach((scaleUpBox: any) => {
         gsap.to(scaleUpBox, {
           scrollTrigger: {
+            scroller: scrollContainerRef.current,
             trigger: scaleUpBox,
             scrub: true,
             start: 'top bottom', // when the bottom of the trigger hits the bottom of the viewport

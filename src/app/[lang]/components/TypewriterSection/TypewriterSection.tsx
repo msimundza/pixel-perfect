@@ -12,7 +12,7 @@ const TypewriterSection = ({
   const options = Object.values(dictionary.typewriter);
 
   return (
-    <div>
+    <>
       <div className="picture-wrap">
         <Image fill src={typeWriterBgImage} alt="background image" />
       </div>
@@ -24,7 +24,7 @@ const TypewriterSection = ({
           </span>
         </p>
       </div>
-    </div>
+    </>
   );
 };
 
