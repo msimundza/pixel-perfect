@@ -74,7 +74,7 @@ export const Main = ({
             trigger: p.parentNode?.parentNode as Element,
             scrub,
             start: 'top bottom',
-            end: 'top 50%',
+            end: 'top 70%',
           },
         })
         .to(p, {
@@ -85,7 +85,7 @@ export const Main = ({
             trigger: p.parentNode?.parentNode as Element,
             scrub,
             start: 'bottom bottom',
-            end: 'bottom 50%',
+            end: 'bottom 70%',
           },
         });
 
@@ -100,7 +100,8 @@ export const Main = ({
             trigger: pictureWrap?.parentNode as Element,
             scrub,
             start: 'top bottom',
-            end: 'top 50%',
+            end: 'top 70%',
+            markers: true,
           },
         })
         .to(pictureWrap, {
@@ -111,7 +112,8 @@ export const Main = ({
             trigger: pictureWrap?.parentNode as Element,
             scrub,
             start: 'bottom bottom',
-            end: 'bottom 50%',
+            end: 'bottom 70%',
+            markers: true,
           },
         });
 
