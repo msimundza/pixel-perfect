@@ -1,8 +1,8 @@
 'use client';
 import Image from 'next/image';
-import Typewriter from '../Typewriter';
 import typeWriterBgImage from '/public/bg.webp';
 import { getDictionary } from '@/dictionaries';
+import Typewriter from './Typewriter';
 
 const TypewriterSection = ({
   dictionary,
@@ -19,9 +19,6 @@ const TypewriterSection = ({
       <div className="section__content">
         <p>
           <Typewriter options={options} />
-          <span className="blink text-white text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
-            |
-          </span>
         </p>
       </div>
     </>
