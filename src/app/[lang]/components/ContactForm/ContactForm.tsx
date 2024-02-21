@@ -8,11 +8,14 @@ import ArrowsButton from '/public/arrowsButton.svg';
 import Spinner from '../Spinner/Spinner';
 import { Slide, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Locale } from '@/i18n-config';
 
 export const ContactForm = ({
   dictionary,
+  lang,
 }: {
   dictionary: Awaited<ReturnType<typeof getDictionary>>;
+  lang: Locale;
 }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -86,7 +89,7 @@ export const ContactForm = ({
 
     try {
       setIsLoading(true);
-      const res = await fetch('/email', {
+      const res = await fetch(`/${lang}/email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

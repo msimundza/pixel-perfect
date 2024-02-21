@@ -157,7 +157,7 @@ export const Main = ({
         className="min-h-screen w-screen flex place-items-center bg-white py-12 px-4"
         id="contact-me"
       >
-        <ContactForm dictionary={dictionary} />
+        <ContactForm dictionary={dictionary} lang={lang} />
       </section>
       <Footer dictionary={dictionary} />
       <ScrollIndicator scrollContainerRef={scrollContainerRef} />

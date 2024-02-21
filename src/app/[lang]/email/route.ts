@@ -1,7 +1,6 @@
-// app/contact/api/send.tsx
 import type { NextRequest } from 'next/server';
 import nodemailer from 'nodemailer';
-
+import { contactFormSchema } from '../models/ContactMeSchema';
 export const dynamic = 'force-dynamic'; // defaults to auto
 
 // Helper function to verify reCAPTCHA token
@@ -30,8 +29,23 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  const { firstName, lastName, email, message, phone, recaptchaToken } =
-    await req.json();
+  const formData = await req.json();
+  const validationResult = contactFormSchema.safeParse(formData);
+  if (!validationResult.success) {
+    // Return validation errors if validation fails
+    return new Response(
+      JSON.stringify({ error: validationResult.error.format() }),
+      {
+        status: 400,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  }
+
+  const { firstName, lastName, email, message, telephone, recaptchaToken } =
+    validationResult.data;
 
   const isCaptchaValid = await verifyRecaptchaToken(recaptchaToken);
   if (!isCaptchaValid) {
@@ -63,8 +77,8 @@ export async function POST(req: NextRequest) {
     from: '"Pixel Perfect" <markosimundza@gmail.com>', // sender address
     to: 'markosimundza@gmail.com', // list of receivers
     subject: 'PIXEL PERFECT - new message', // Subject line
-    text: `Message from ${firstName} ${lastName}, Email: ${email}, Message: ${message}, Phone: ${phone}`, // plain text body
-    html: `<b>Message from ${firstName} ${lastName}, Email: ${email}, Phone: ${phone}</b><p>${message}</p>`, // HTML body
+    text: `Message from ${firstName} ${lastName}, Email: ${email}, Message: ${message}, Phone: ${telephone}`, // plain text body
+    html: `<b>Message from ${firstName} ${lastName}, Email: ${email}, Phone: ${telephone}</b><p>${message}</p>`, // HTML body
   };
 
   // Send the email
