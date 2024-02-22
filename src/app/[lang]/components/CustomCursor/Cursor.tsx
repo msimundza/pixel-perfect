@@ -36,6 +36,10 @@ const Cursor: React.FC = () => {
     };
   }, [isTouchDevice]);
 
+  if (isTouchDevice) {
+    return null;
+  }
+
   return (
     <span
       className={`custom-cursor ${clickable ? 'clickable-active' : ''}`}
