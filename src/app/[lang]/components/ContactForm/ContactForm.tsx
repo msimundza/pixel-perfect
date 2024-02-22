@@ -140,7 +140,7 @@ export const ContactForm = ({
         className="container text-black max-w-4xl mx-auto mt-10 rounded text-center"
         onSubmit={handleSubmit}
       >
-        <h2 className="mb-10 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold uppercase">
+        <h2 className="mb-10 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold uppercase">
           {title}
         </h2>
         <div className="grid gap-6 mb-6 lg:grid-cols-2">

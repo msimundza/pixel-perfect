@@ -148,7 +148,7 @@ export const Main = ({
         <About dictionary={dictionary} />
       </section>
       <section
-        className="min-h-screen w-screen bg-black py-12 px-4"
+        className="min-h-screen w-screen flex place-items-center bg-black py-12 px-4"
         id="projects"
       >
         <ProjectShowcase dictionary={dictionary} />
