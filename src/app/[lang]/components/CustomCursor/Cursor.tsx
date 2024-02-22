@@ -4,8 +4,11 @@ import './Cursor.css'; // Import the CSS file
 const Cursor: React.FC = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [clickable, setClickable] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+
     const updatePosition = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
     };
@@ -16,17 +19,22 @@ const Cursor: React.FC = () => {
       while (target && !target.classList.contains('clickable')) {
         target = target.parentElement;
       }
-      setClickable(!!target); // true if 'clickable', false otherwise
+      setClickable(!!target);
     };
 
-    document.addEventListener('mousemove', updatePosition);
-    document.addEventListener('mouseover', checkClickable);
+    // Add event listeners only if it's not a touch device
+    if (!isTouchDevice) {
+      document.addEventListener('mousemove', updatePosition);
+      document.addEventListener('mouseover', checkClickable);
+    }
 
     return () => {
-      document.removeEventListener('mousemove', updatePosition);
-      document.removeEventListener('mouseover', checkClickable);
+      if (!isTouchDevice) {
+        document.removeEventListener('mousemove', updatePosition);
+        document.removeEventListener('mouseover', checkClickable);
+      }
     };
-  }, []);
+  }, [isTouchDevice]);
 
   return (
     <span

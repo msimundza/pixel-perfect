@@ -83,7 +83,7 @@ export const ContactForm = ({
       lastName,
       email,
       message,
-      phone: telephone,
+      telephone,
       recaptchaToken,
     };
 
@@ -192,7 +192,7 @@ export const ContactForm = ({
           />
           <input
             type="tel"
-            name="phone"
+            name="telephone"
             placeholder={telephonePlaceholder}
             value={telephone}
             onChange={(e) => setTelephone(e.target.value)}
