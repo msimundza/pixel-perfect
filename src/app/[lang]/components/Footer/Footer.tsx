@@ -122,7 +122,7 @@ const Footer = ({
                 <li>
                   <a
                     href="#about"
-                    className="text-lg hover:text-gray-300 transition-colors duration-300"
+                    className="clickable text-lg hover:text-gray-300 transition-colors duration-300"
                   >
                     {dictionary.aboutMe.title1}
                   </a>
@@ -130,7 +130,7 @@ const Footer = ({
                 <li>
                   <a
                     href="#projects"
-                    className="text-lg hover:text-gray-300 transition-colors duration-300"
+                    className="clickable text-lg hover:text-gray-300 transition-colors duration-300"
                   >
                     {dictionary.projects.title}
                   </a>
@@ -138,7 +138,7 @@ const Footer = ({
                 <li>
                   <a
                     href="#contact-me"
-                    className="text-lg hover:text-gray-300 transition-colors duration-300"
+                    className="clickable text-lg hover:text-gray-300 transition-colors duration-300"
                   >
                     {dictionary.contact.title}
                   </a>
@@ -154,7 +154,7 @@ const Footer = ({
                       href="https://www.facebook.com/profile.php?id=61556434918711"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-lg hover:text-gray-300 transition-colors duration-300"
+                      className="clickable text-lg hover:text-gray-300 transition-colors duration-300"
                     >
                       Facebook
                     </a>
@@ -164,7 +164,7 @@ const Footer = ({
                       href="https://instagram.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-lg hover:text-gray-300 transition-colors duration-300"
+                      className="clickable text-lg hover:text-gray-300 transition-colors duration-300"
                     >
                       Instagram
                     </a>

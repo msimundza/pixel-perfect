@@ -1,4 +1,3 @@
-'use client';
 import React, { useState, useEffect } from 'react';
 import './Cursor.css'; // Import the CSS file
 
@@ -10,32 +9,28 @@ const Cursor: React.FC = () => {
     const updatePosition = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
     };
-    const checkClickable = (e: Event) => {
-      const target = e.target as HTMLElement;
-      if (
-        target.tagName === 'A' ||
-        target.tagName === 'BUTTON' ||
-        target.getAttribute('role') === 'button'
-      ) {
-        setClickable(true);
-      } else {
-        setClickable(false);
+
+    const checkClickable = (e: MouseEvent) => {
+      // Efficiently check if the hovered element or any of its parents have the 'clickable' class
+      let target: HTMLElement | null = e.target as HTMLElement;
+      while (target && !target.classList.contains('clickable')) {
+        target = target.parentElement;
       }
+      setClickable(!!target); // true if 'clickable', false otherwise
     };
-    window.addEventListener('mousemove', updatePosition);
-    window.addEventListener('mouseover', checkClickable);
-    window.addEventListener('mouseout', checkClickable);
+
+    document.addEventListener('mousemove', updatePosition);
+    document.addEventListener('mouseover', checkClickable);
 
     return () => {
-      window.removeEventListener('mousemove', updatePosition);
-      window.removeEventListener('mouseover', checkClickable);
-      window.removeEventListener('mouseout', checkClickable);
+      document.removeEventListener('mousemove', updatePosition);
+      document.removeEventListener('mouseover', checkClickable);
     };
   }, []);
 
   return (
     <span
-      className={`custom-cursor ${clickable ? 'clickable' : ''}`}
+      className={`custom-cursor ${clickable ? 'clickable-active' : ''}`}
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,

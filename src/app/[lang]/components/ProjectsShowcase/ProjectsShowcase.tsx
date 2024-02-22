@@ -56,7 +56,7 @@ const ProjectShowcase = ({
                 rel="noopener noreferrer"
                 className="flex justify-center items-center w-8 h-8"
               >
-                <NewTabImage />
+                <NewTabImage className="clickable" />
               </a>
             </div>
           </div>
