@@ -26,7 +26,7 @@ const Header = ({ language }: HeaderProps) => {
           height={15}
           className={`${
             language === 'en' ? '' : 'grayscale'
-          } mr-2 clickable h-8 w-8 xl:h-12 xl:w-12`}
+          } mr-2 clickable h-10 w-10 md:h-12 md:w-12 xl:h-14 xl:w-14`}
         />
       </Link>
 
@@ -36,7 +36,7 @@ const Header = ({ language }: HeaderProps) => {
           height={15}
           className={`${
             language === 'hr' ? '' : 'grayscale'
-          } clickable h-8 w-8 lg:h-12 lg:w-12`}
+          } clickable h-10 w-10 md:h-12 md:w-12 xl:h-14 xl:w-14`}
         />
       </Link>
     </header>
