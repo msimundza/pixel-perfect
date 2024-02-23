@@ -54,9 +54,10 @@ const ProjectShowcase = ({
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex justify-center items-center w-8 h-8"
+                className="flex justify-center items-center"
+                title="Open project in a new tab"
               >
-                <NewTabImage className="clickable" />
+                <NewTabImage className="clickable w-8 h-8" />
               </a>
             </div>
           </div>

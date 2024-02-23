@@ -24,7 +24,9 @@ const Header = ({ language }: HeaderProps) => {
         <GreatBritainFlag
           width={30}
           height={15}
-          className={`${language === 'en' ? '' : 'grayscale'} mr-2 clickable`}
+          className={`${
+            language === 'en' ? '' : 'grayscale'
+          } mr-2 clickable h-8 w-8 xl:h-12 xl:w-12`}
         />
       </Link>
 
@@ -32,7 +34,9 @@ const Header = ({ language }: HeaderProps) => {
         <CroatianFlag
           width={30}
           height={15}
-          className={`${language === 'hr' ? '' : 'grayscale'} clickable`}
+          className={`${
+            language === 'hr' ? '' : 'grayscale'
+          } clickable h-8 w-8 lg:h-12 lg:w-12`}
         />
       </Link>
     </header>
