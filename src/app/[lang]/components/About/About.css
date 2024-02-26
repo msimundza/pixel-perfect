@@ -1,0 +1,39 @@
+[data-glow] {
+  position: absolute;
+  inset: 0;
+  border-radius: 0.5rem;
+  border: 5px solid transparent;
+  mask: linear-gradient(transparent, transparent), linear-gradient(white, white);
+  mask-clip: padding-box, border-box;
+  mask-composite: intersect;
+  pointer-events: none;
+}
+
+[data-glow]::after {
+  content: '';
+  height: 300px;
+  aspect-ratio: 1 / 1;
+  offset-anchor: 100% 50%;
+  background: radial-gradient(circle at right, white, transparent);
+  opacity: 1;
+  offset-path: rect(0 100% 100% 0 round 0.5rem);
+  offset-path: rect(0 100% 100% 0 round 100px);
+  position: absolute;
+  display: inline-block;
+  animation: loop 4s infinite linear;
+}
+
+[data-glow]::before {
+  display: inline-block;
+  animation-delay: 2s;
+}
+
+[data-glow] {
+  transition: opacity 1s, transform 1s;
+}
+
+@keyframes loop {
+  to {
+    offset-distance: 100%;
+  }
+}
