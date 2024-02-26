@@ -14,6 +14,7 @@ import { Locale } from '@/i18n-config';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import './Main.css';
 
 export const Main = ({
   dictionary,
@@ -135,7 +136,7 @@ export const Main = ({
   });
 
   return (
-    <div ref={scrollContainerRef} className="overflow-x-hidden h-screen">
+    <div ref={scrollContainerRef} className="overflow-x-hidden h-screen main">
       <Cursor />
       <section className="bg-white text-black min-h-screen w-screen relative">
         <Header language={lang} />
