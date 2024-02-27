@@ -18,3 +18,12 @@
   scale: 1.5;
   pointer-events: none;
 }
+
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  background: #999999;
+  z-index: 1001;
+}
