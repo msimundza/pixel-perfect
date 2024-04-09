@@ -13,8 +13,24 @@ const chakra = Chakra_Petch({
 });
 
 export const metadata: Metadata = {
-  title: 'Pixel Perfect',
-  description: 'Created by @msimundza',
+  title:
+    'Pixel Perfect: Web Site Design and Development, SEO, and Everything in Between.',
+  description:
+    'Pixel Perfect: Unleashing Digital Potential with Custom Web Solutions and SEO Excellence.',
+  openGraph: {
+    title:
+      'Pixel Perfect: Web Site Design and Development, SEO, and Everything in Between.',
+    description:
+      'Pixel Perfect: Unleashing Digital Potential with Custom Web Solutions and SEO Excellence.',
+    images: [
+      {
+        url: 'https://www.pixelperfect.hr/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.2707e4a7.webp&w=256&q=75',
+        width: 1200,
+        height: 630,
+        alt: 'Pixel Perfect: Web Site Design and Development, SEO, and Everything in Between.',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
