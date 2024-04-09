@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: 'https://www.pixelperfect.hr/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.2707e4a7.webp&w=256&q=75',
-        width: 1200,
-        height: 630,
+        width: 256,
+        height: 256,
         alt: 'Pixel Perfect: Web Site Design and Development, SEO, and Everything in Between.',
       },
     ],
