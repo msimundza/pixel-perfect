@@ -13,27 +13,6 @@ const chakra = Chakra_Petch({
   weight: ['400', '500', '600', '700'],
 });
 
-// export const metadata: Metadata = {
-//   title:
-//     'Pixel Perfect: Web Site Design and Development, SEO, and Everything in Between.',
-//   description:
-//     'Pixel Perfect: Unleashing Digital Potential with Custom Web Solutions and SEO Excellence.',
-//   openGraph: {
-//     title:
-//       'Pixel Perfect: Web Site Design and Development, SEO, and Everything in Between.',
-//     description:
-//       'Pixel Perfect: Unleashing Digital Potential with Custom Web Solutions and SEO Excellence.',
-//     images: [
-//       {
-//         url: 'https://www.pixelperfect.hr/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.2707e4a7.webp&w=256&q=75',
-//         width: 256,
-//         height: 256,
-//         alt: 'Pixel Perfect: Web Site Design and Development, SEO, and Everything in Between.',
-//       },
-//     ],
-//   },
-// };
-
 export async function generateMetadata({
   params,
 }: {
@@ -60,6 +39,29 @@ export async function generateMetadata({
           alt: title,
         },
       ],
+    },
+    metadataBase: new URL('https://www.pixelperfect.hr'),
+    alternates: {
+      canonical: 'https://www.pixelperfect.hr',
+      languages: {
+        en: 'https://www.pixelperfect.hr/en',
+        hr: 'https://www.pixelperfect.hr/hr',
+      },
+    },
+    category: 'Technology, Software, Web Development',
+    keywords: [
+      'web development',
+      'software development',
+      'technology',
+      'digital solutions',
+      'web design',
+    ],
+    authors: {
+      name: 'Pixel Perfect',
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }
