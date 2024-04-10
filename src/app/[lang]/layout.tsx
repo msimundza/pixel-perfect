@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Chakra_Petch } from 'next/font/google';
 import './globals.css';
 import { i18n, type Locale } from '../../i18n-config';
+import { getDictionary } from '@/dictionaries';
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
@@ -12,26 +13,56 @@ const chakra = Chakra_Petch({
   weight: ['400', '500', '600', '700'],
 });
 
-export const metadata: Metadata = {
-  title:
-    'Pixel Perfect: Web Site Design and Development, SEO, and Everything in Between.',
-  description:
-    'Pixel Perfect: Unleashing Digital Potential with Custom Web Solutions and SEO Excellence.',
-  openGraph: {
-    title:
-      'Pixel Perfect: Web Site Design and Development, SEO, and Everything in Between.',
-    description:
-      'Pixel Perfect: Unleashing Digital Potential with Custom Web Solutions and SEO Excellence.',
-    images: [
-      {
-        url: 'https://www.pixelperfect.hr/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.2707e4a7.webp&w=256&q=75',
-        width: 256,
-        height: 256,
-        alt: 'Pixel Perfect: Web Site Design and Development, SEO, and Everything in Between.',
-      },
-    ],
-  },
-};
+// export const metadata: Metadata = {
+//   title:
+//     'Pixel Perfect: Web Site Design and Development, SEO, and Everything in Between.',
+//   description:
+//     'Pixel Perfect: Unleashing Digital Potential with Custom Web Solutions and SEO Excellence.',
+//   openGraph: {
+//     title:
+//       'Pixel Perfect: Web Site Design and Development, SEO, and Everything in Between.',
+//     description:
+//       'Pixel Perfect: Unleashing Digital Potential with Custom Web Solutions and SEO Excellence.',
+//     images: [
+//       {
+//         url: 'https://www.pixelperfect.hr/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.2707e4a7.webp&w=256&q=75',
+//         width: 256,
+//         height: 256,
+//         alt: 'Pixel Perfect: Web Site Design and Development, SEO, and Everything in Between.',
+//       },
+//     ],
+//   },
+// };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: Locale };
+}): Promise<Metadata> {
+  const {
+    metadata: {
+      title,
+      description,
+      openGraph: { title: ogTitle, description: ogDescription },
+    },
+  } = await getDictionary(params.lang);
+  return {
+    title,
+    description,
+    openGraph: {
+      title: ogTitle,
+      description: ogDescription,
+      images: [
+        {
+          url: 'https://www.pixelperfect.hr/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.2707e4a7.webp&w=256&q=75',
+          width: 256,
+          height: 256,
+          alt: title,
+        },
+      ],
+    },
+  };
+}
 
 export default function RootLayout({
   children,

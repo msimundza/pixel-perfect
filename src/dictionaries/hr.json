@@ -1,4 +1,12 @@
 {
+  "metadata": {
+    "title": "Pixel Perfect: Izrada Web Stranica. Brzo, Kvalitetno i Profesionalno.",
+    "description": "Pixel Perfect Vam pruža vrhunska web rješenja, SEO optimizaciju i sve što je potrebno za uspješno poslovanje na internetu. Kontaktirajte nas i ostvarite svoj online potencijal",
+    "openGraph": {
+      "title": "Pixel Perfect: Izrada Web Stranica. Brzo, Kvalitetno i Profesionalno.",
+      "description": "Pixel Perfect Vam pruža vrhunska web rješenja, SEO optimizaciju i sve što je potrebno za uspješno poslovanje na internetu. Kontaktirajte nas i ostvarite svoj online potencijal"
+    }
+  },
   "typewriter": {
     "line1": "Vizualno Savršene Web Stranice.",
     "line2": "Digitalna Rješenja gdje Svaki Piksel ima Svoje Mjesto.",
