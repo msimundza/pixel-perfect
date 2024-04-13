@@ -48,13 +48,16 @@ export async function generateMetadata({
         hr: 'https://www.pixelperfect.hr/hr',
       },
     },
-    category: 'Technology, Software, Web Development',
+    category: 'Technology, Software, Web Development, Split, Croatia',
     keywords: [
       'web development',
       'software development',
       'technology',
       'digital solutions',
       'web design',
+      'Split',
+      'Croatia',
+      'Hrvatska',
     ],
     authors: {
       name: 'Pixel Perfect',
