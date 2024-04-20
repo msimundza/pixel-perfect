@@ -104,7 +104,7 @@ const Header = ({ language, dictionary }: HeaderProps) => {
           <HeaderLink href="#contact-me" text={dictionary.contact.title} />
         </nav>
 
-        <div className="flex items-center ml-auto pr-6 sm:pr-8 md:pr-10 lg:pr-12 xl:pr-16">
+        <div className="flex items-center ml-auto pr-1 sm:pr-8 md:pr-10 lg:pr-12 xl:pr-16">
           <Link href={redirectedPathname('en')}>
             <GreatBritainFlag
               width={30}
