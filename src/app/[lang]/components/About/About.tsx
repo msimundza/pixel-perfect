@@ -22,7 +22,7 @@ const About = ({
   } = dictionary.aboutMe;
 
   return (
-    <div className="pb-16 pt-16 lg:mr-1 lg:ml-1 xl:mr-4 xl:ml-4">
+    <div className="pb-12 pt-20 mt-10 lg:mr-1 lg:ml-1 xl:mr-4 xl:ml-4">
       <div className="flex flex-col md:flex-row md:flex-wrap">
         <div className="md:order-1 element-scale-up text-center uppercase text-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex items-center justify-center w-full md:w-1/2 mb-2">
           {title1}

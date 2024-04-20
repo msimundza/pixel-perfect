@@ -174,7 +174,7 @@ const Footer = ({
             </div>
           </div>
           <div className="text-center text-gray-400 text-sm mt-8 md:mt-12">
-            © {new Date().getFullYear()} {trademark}
+            © 2024 {trademark}
           </div>
         </div>
       </footer>

@@ -21,7 +21,7 @@ const ProjectShowcase = ({
   ];
 
   return (
-    <div className="max-w-4xl mx-auto container">
+    <div className="max-w-4xl mt-10 mx-auto container">
       <div className="text-center mb-12">
         <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold uppercase text-white">
           {title}
