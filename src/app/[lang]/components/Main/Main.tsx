@@ -138,8 +138,8 @@ export const Main = ({
   return (
     <div ref={scrollContainerRef} className="overflow-x-hidden h-screen main">
       <Cursor />
+      <Header language={lang} />
       <section className="bg-white text-black min-h-screen w-screen relative">
-        <Header language={lang} />
         <BlowoutText />
       </section>
       <section className="min-h-screen w-screen">

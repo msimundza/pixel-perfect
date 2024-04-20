@@ -19,26 +19,28 @@ const Header = ({ language }: HeaderProps) => {
   };
 
   return (
-    <header className="flex absolute right-0 p-4 pr-6 sm:pr-8 md:pr-10 lg:pr-12 xl:pr-16 z-10">
-      <Link href={redirectedPathname('en')}>
-        <GreatBritainFlag
-          width={30}
-          height={15}
-          className={`${
-            language === 'en' ? '' : 'grayscale'
-          } mr-2 clickable h-10 w-10 md:h-12 md:w-12 xl:h-14 xl:w-14`}
-        />
-      </Link>
+    <header className="fixed flex top-0 left-0 right-0 border-b border-gray-400 h-16 bg-gray-900 bg-opacity-75 backdrop-filter backdrop-blur-md z-10">
+      <div className="flex items-center ml-auto pr-6 sm:pr-8 md:pr-10 lg:pr-12 xl:pr-16">
+        <Link href={redirectedPathname('en')}>
+          <GreatBritainFlag
+            width={30}
+            height={15}
+            className={`${
+              language === 'en' ? '' : 'grayscale'
+            } mr-2 clickable h-10 w-10 md:h-12 md:w-12 xl:h-14 xl:w-14`}
+          />
+        </Link>
 
-      <Link href={redirectedPathname('hr')}>
-        <CroatianFlag
-          width={30}
-          height={15}
-          className={`${
-            language === 'hr' ? '' : 'grayscale'
-          } clickable h-10 w-10 md:h-12 md:w-12 xl:h-14 xl:w-14`}
-        />
-      </Link>
+        <Link href={redirectedPathname('hr')}>
+          <CroatianFlag
+            width={30}
+            height={15}
+            className={`${
+              language === 'hr' ? '' : 'grayscale'
+            } clickable h-10 w-10 md:h-12 md:w-12 xl:h-14 xl:w-14`}
+          />
+        </Link>
+      </div>
     </header>
   );
 };
