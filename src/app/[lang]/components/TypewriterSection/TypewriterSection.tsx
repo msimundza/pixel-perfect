@@ -17,9 +17,9 @@ const TypewriterSection = ({
         <Image fill src={typeWriterBgImage} alt="background image" />
       </div>
       <div className="section__content">
-        <p>
+        <h2>
           <Typewriter options={options} />
-        </p>
+        </h2>
       </div>
     </>
   );
