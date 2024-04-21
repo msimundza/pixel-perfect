@@ -3,6 +3,7 @@ import { Chakra_Petch } from 'next/font/google';
 import './globals.css';
 import { i18n, type Locale } from '../../i18n-config';
 import { getDictionary } from '@/dictionaries';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
@@ -85,6 +86,7 @@ export default function RootLayout({
         className={`${chakra.className} grid place-items-center min-h-screen text-white overflow-x-hidden `}
       >
         <main className="overflow-x-hidden w-screen">{children}</main>
+        <GoogleAnalytics gaId="G-C3P38C2DES" />
       </body>
     </html>
   );
