@@ -25,7 +25,7 @@ function getLocale(request: NextRequest): string | undefined {
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  const noRedirectPaths = ['/sitemap.xml'];
+  const noRedirectPaths = ['/sitemap.xml', '/robots.txt'];
 
   // Check if the current path is one that shouldn't be redirected
   if (noRedirectPaths.includes(pathname)) {
