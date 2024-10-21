@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const cspHeader = `
     default-src 'self';
-    connect-src 'self' https://*.google-analytics.com https://www.google-analytics.com;
+    connect-src 'self' https://*.google-analytics.com https://www.google-analytics.com https://api.emailjs.com;
     script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://www.googletagmanager.com;
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data:;

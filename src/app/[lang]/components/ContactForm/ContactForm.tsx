@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import './ContactForm.css';
 import { getDictionary } from '@/dictionaries';
@@ -9,6 +9,7 @@ import Spinner from '../Spinner/Spinner';
 import { Slide, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Locale } from '@/i18n-config';
+import emailjs from '@emailjs/browser';
 
 export const ContactForm = ({
   dictionary,
@@ -17,6 +18,8 @@ export const ContactForm = ({
   dictionary: Awaited<ReturnType<typeof getDictionary>>;
   lang: Locale;
 }) => {
+  const form = useRef<HTMLFormElement | null>(null);
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -89,43 +92,45 @@ export const ContactForm = ({
 
     try {
       setIsLoading(true);
-      const res = await fetch(`/${lang}/email`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      emailjs
+        .sendForm('service_xf8la9p', 'template_wv50r6d', form.current as any, {
+          publicKey: 'Uyb3mMjEPjxUhK-U-',
+        })
+        .then(
+          () => {
+            // Email sent successfully, reset form fields and reCAPTCHA
 
-      if (res.ok) {
-        // Email sent successfully, reset form fields and reCAPTCHA
-        setFirstName('');
-        setLastName('');
-        setEmail('');
-        setMessage('');
-        setTelephone('');
-        setRecaptchaToken(''); // Clear the reCAPTCHA token state
+            console.log('SUCCESS!');
+            setFirstName('');
+            setLastName('');
+            setEmail('');
+            setMessage('');
+            setTelephone('');
+            setRecaptchaToken(''); // Clear the reCAPTCHA token state
 
-        // Reset the reCAPTCHA widget
-        if (window.grecaptcha) {
-          window.grecaptcha.reset();
-        }
+            // Reset the reCAPTCHA widget
+            if (window.grecaptcha) {
+              window.grecaptcha.reset();
+            }
 
-        toast.success('Email sent successfully!', {
-          position: 'top-right',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'dark',
-          transition: Slide,
-        });
-      } else {
-        // Handle server errors or invalid responses
-        throw new Error('Failed to send message');
-      }
+            toast.success('Email sent successfully!', {
+              position: 'top-right',
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: 'dark',
+              transition: Slide,
+            });
+          },
+          (error) => {
+            console.log('FAILED...', error.text);
+            // Handle server errors or invalid responses
+            throw new Error('Failed to send message');
+          }
+        );
     } catch (error) {
       console.error('Error sending email', error);
     } finally {
@@ -138,6 +143,7 @@ export const ContactForm = ({
       <RecaptchaScript />
       <form
         className="container text-black max-w-4xl mx-auto mt-10 rounded text-center"
+        ref={form}
         onSubmit={handleSubmit}
       >
         <h2 className="mb-10 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold uppercase">
