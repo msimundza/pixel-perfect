@@ -81,15 +81,6 @@ export const ContactForm = ({
       return;
     }
 
-    const formData = {
-      firstName,
-      lastName,
-      email,
-      message,
-      telephone,
-      recaptchaToken,
-    };
-
     try {
       setIsLoading(true);
       emailjs
