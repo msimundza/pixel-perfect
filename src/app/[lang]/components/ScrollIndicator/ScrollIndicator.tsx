@@ -3,7 +3,7 @@ import React, { useState, useEffect, RefObject } from 'react';
 import './ScrollIndicator.css';
 
 interface ScrollIndicatorProps {
-  scrollContainerRef: RefObject<HTMLDivElement>;
+  scrollContainerRef: RefObject<HTMLDivElement | null>;
 }
 
 const ScrollIndicator = ({ scrollContainerRef }: ScrollIndicatorProps) => {
