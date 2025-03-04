@@ -1,11 +1,11 @@
 'use client';
-import GreatBritainFlag from '/public/gb.svg';
-import CroatianFlag from '/public/hr.svg';
+import GreatBritainFlag from '../../../../../public/gb.svg';
+import CroatianFlag from '../../../../../public/hr.svg';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Locale } from '@/i18n-config';
 import Image from 'next/image';
-import logo from '/public/logo.webp';
+import logo from '../../../../../public/logo.webp';
 import { getDictionary } from '@/dictionaries';
 import { useState } from 'react';
 

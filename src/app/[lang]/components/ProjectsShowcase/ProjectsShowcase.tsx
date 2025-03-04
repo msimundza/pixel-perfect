@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import jimGymThumbnail from '/public/jimgym.webp';
-import NewTabImage from '/public/newTab.svg';
+import jimGymThumbnail from '../../../../../public/jimgym.webp';
+import NewTabImage from '../../../../../public/newTab.svg';
 import { getDictionary } from '@/dictionaries';
 
 const ProjectShowcase = ({

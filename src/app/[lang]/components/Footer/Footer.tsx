@@ -4,7 +4,7 @@ import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { type ISourceOptions } from '@tsparticles/engine';
 import { loadSlim } from '@tsparticles/slim';
 import Image from 'next/image';
-import logo from '/public/logo.webp';
+import logo from '../../../../../public/logo.webp';
 import { getDictionary } from '@/dictionaries';
 
 const Footer = ({

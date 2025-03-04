@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import './ContactForm.css';
 import { getDictionary } from '@/dictionaries';
 import RecaptchaScript from '../Recaptcha/Recaptcha';
-import ArrowsButton from '/public/arrowsButton.svg';
+import ArrowsButton from '../../../../../public/arrowsButton.svg';
 import Spinner from '../Spinner/Spinner';
 import { Slide, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

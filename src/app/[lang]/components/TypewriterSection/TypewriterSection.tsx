@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import typeWriterBgImage from '/public/bg.webp';
+import typeWriterBgImage from '../../../../../public/bg.webp';
 import { getDictionary } from '@/dictionaries';
 import Typewriter from './Typewriter';
 

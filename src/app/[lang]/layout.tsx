@@ -14,11 +14,12 @@ const chakra = Chakra_Petch({
   weight: ['400', '500', '600', '700'],
 });
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { lang: Locale };
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ lang: Locale }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const {
     metadata: {
       title,
@@ -73,13 +74,18 @@ export async function generateMetadata({
   };
 }
 
-export default function RootLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: { lang: Locale };
-}) {
+export default async function RootLayout(
+  props: {
+    children: React.ReactNode;
+    params: Promise<{ lang: Locale }>;
+  }
+) {
+  const params = await props.params;
+
+  const {
+    children
+  } = props;
+
   return (
     <html lang={params.lang}>
       <body

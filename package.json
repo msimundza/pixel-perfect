@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --experimental-https",
+    "dev": "next dev --turbopack --experimental-https",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -15,17 +15,17 @@
     "@emailjs/browser": "^4.4.1",
     "@formatjs/intl-localematcher": "^0.5.4",
     "@gsap/react": "^2.1.0",
-    "@next/third-parties": "^14.2.2",
+    "@next/third-parties": "15.2.1",
     "@tsparticles/engine": "^3.3.0",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.3.0",
     "classnames": "^2.5.1",
     "gsap": "^3.12.5",
     "negotiator": "^0.6.3",
-    "next": "^14.2.2",
+    "next": "15.2.1",
     "nodemailer": "^6.9.10",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "react-toastify": "^10.0.4",
     "sharp": "^0.33.3",
     "tsparticles": "^3.3.0",
@@ -38,17 +38,18 @@
     "@types/negotiator": "^0.6.3",
     "@types/node": "^20",
     "@types/nodemailer": "^6.4.14",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.4",
     "autoprefixer": "^10.4.17",
     "commitlint": "^19.0.1",
     "cz-conventional-changelog": "^3.3.0",
     "cz-customizable": "^7.0.0",
     "eslint": "^8",
-    "eslint-config-next": "14.1.4",
+    "eslint-config-next": "15.2.1",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "postcss": "^8",
+    "prettier": "3.5.3",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
@@ -62,5 +63,9 @@
       "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "overrides": {
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.4"
   }
 }

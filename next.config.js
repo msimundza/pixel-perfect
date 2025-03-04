@@ -16,6 +16,16 @@ const cspHeader = `
 `;
 
 const nextConfig = {
+  experimental: {
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
+  },
   images: {
     formats: ['image/webp'],
   },
