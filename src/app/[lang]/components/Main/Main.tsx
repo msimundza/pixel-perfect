@@ -30,6 +30,8 @@ export const Main = ({
     if (!CSS.supports('animation-timeline: scroll()')) {
       const scrub = 0.2;
       const name = document.querySelector('.blowout-text') as HTMLElement;
+      if (!name || !name.parentNode) return;
+
       gsap
         .timeline()
         .to(name, {
@@ -65,6 +67,7 @@ export const Main = ({
       const p = document.querySelector(
         'section:nth-of-type(2) p'
       ) as HTMLElement;
+      if (!p || !p.parentNode) return;
       gsap
         .timeline()
         .to(p, {
@@ -91,6 +94,7 @@ export const Main = ({
         });
 
       const pictureWrap = document.querySelector('.picture-wrap');
+      if (!pictureWrap || !pictureWrap.parentNode) return;
       gsap
         .timeline()
         .to(pictureWrap, {
