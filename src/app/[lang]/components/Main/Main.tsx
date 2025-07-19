@@ -27,116 +27,119 @@ export const Main = ({
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    if (!CSS.supports('animation-timeline: scroll()')) {
-      const scrub = 0.2;
-      const name = document.querySelector('.blowout-text') as HTMLElement;
-      if (!name || !name.parentNode) return;
+    setTimeout(() => {
+      if (!CSS.supports('animation-timeline: scroll()')) {
+        const scrub = 0.2;
+        const name = document.querySelector('.blowout-text') as HTMLElement;
+        if (!name || !name.parentNode) return;
 
-      gsap
-        .timeline()
-        .to(name, {
-          scrollTrigger: {
-            scroller: scrollContainerRef.current,
-            invalidateOnRefresh: true,
-            trigger: name.parentNode as Element,
-            scrub,
-            start: 'top top',
-            end: 'bottom top-=25%',
-          },
-          opacity: 1,
-        })
-        .to(
-          name,
-          {
+        gsap
+          .timeline()
+          .to(name, {
             scrollTrigger: {
               scroller: scrollContainerRef.current,
               invalidateOnRefresh: true,
               trigger: name.parentNode as Element,
               scrub,
               start: 'top top',
-              end: 'bottom top',
+              end: 'bottom top-=25%',
+            },
+            opacity: 1,
+          })
+          .to(
+            name,
+            {
+              scrollTrigger: {
+                scroller: scrollContainerRef.current,
+                invalidateOnRefresh: true,
+                trigger: name.parentNode as Element,
+                scrub,
+                start: 'top top',
+                end: 'bottom top',
+              },
+              keyframes: {
+                '0%': { background: 'transparent' },
+                '95%': { background: 'transparent' },
+                '100%': { z: '99vh', background: 'black' },
+              },
+            },
+            0
+          );
+
+        const p = document.querySelector(
+          'section:nth-of-type(2) p'
+        ) as HTMLElement;
+        if (!p || !p.parentNode) return;
+        gsap
+          .timeline()
+          .to(p, {
+            opacity: 1,
+            immediateRender: false,
+            scrollTrigger: {
+              scroller: scrollContainerRef.current,
+              trigger: p.parentNode?.parentNode as Element,
+              scrub,
+              start: 'top bottom',
+              end: 'top 70%',
+            },
+          })
+          .to(p, {
+            opacity: 0,
+            immediateRender: false,
+            scrollTrigger: {
+              scroller: scrollContainerRef.current,
+              trigger: p.parentNode?.parentNode as Element,
+              scrub,
+              start: 'bottom bottom',
+              end: 'bottom 70%',
+            },
+          });
+
+        const pictureWrap = document.querySelector('.picture-wrap');
+        if (!pictureWrap || !pictureWrap.parentNode) return;
+        gsap
+          .timeline()
+          .to(pictureWrap, {
+            opacity: 1,
+            immediateRender: false,
+            scrollTrigger: {
+              scroller: scrollContainerRef.current,
+              trigger: pictureWrap?.parentNode as Element,
+              scrub,
+              start: 'top bottom',
+              end: 'top 70%',
+            },
+          })
+          .to(pictureWrap, {
+            opacity: 0,
+            immediateRender: false,
+            scrollTrigger: {
+              scroller: scrollContainerRef.current,
+              trigger: pictureWrap?.parentNode as Element,
+              scrub,
+              start: 'bottom bottom',
+              end: 'bottom 70%',
+            },
+          });
+
+        const scaleUpBoxes = gsap.utils.toArray('.element-scale-up');
+        scaleUpBoxes.forEach((scaleUpBox: any) => {
+          gsap.to(scaleUpBox, {
+            scrollTrigger: {
+              scroller: scrollContainerRef.current,
+              trigger: scaleUpBox,
+              scrub: true,
+              start: 'top bottom', // when the bottom of the trigger hits the bottom of the viewport
+              end: 'center center', // end after triggers center scrolls past center of the viewport
             },
             keyframes: {
-              '0%': { background: 'transparent' },
-              '95%': { background: 'transparent' },
-              '100%': { z: '99vh', background: 'black' },
+              '0%': { transform: 'scale(0.8)', opacity: 0 },
+              '100%': { transform: 'scale(1)', opacity: 1 },
             },
-          },
-          0
-        );
-      const p = document.querySelector(
-        'section:nth-of-type(2) p'
-      ) as HTMLElement;
-      if (!p || !p.parentNode) return;
-      gsap
-        .timeline()
-        .to(p, {
-          opacity: 1,
-          immediateRender: false,
-          scrollTrigger: {
-            scroller: scrollContainerRef.current,
-            trigger: p.parentNode?.parentNode as Element,
-            scrub,
-            start: 'top bottom',
-            end: 'top 70%',
-          },
-        })
-        .to(p, {
-          opacity: 0,
-          immediateRender: false,
-          scrollTrigger: {
-            scroller: scrollContainerRef.current,
-            trigger: p.parentNode?.parentNode as Element,
-            scrub,
-            start: 'bottom bottom',
-            end: 'bottom 70%',
-          },
+          });
         });
-
-      const pictureWrap = document.querySelector('.picture-wrap');
-      if (!pictureWrap || !pictureWrap.parentNode) return;
-      gsap
-        .timeline()
-        .to(pictureWrap, {
-          opacity: 1,
-          immediateRender: false,
-          scrollTrigger: {
-            scroller: scrollContainerRef.current,
-            trigger: pictureWrap?.parentNode as Element,
-            scrub,
-            start: 'top bottom',
-            end: 'top 70%',
-          },
-        })
-        .to(pictureWrap, {
-          opacity: 0,
-          immediateRender: false,
-          scrollTrigger: {
-            scroller: scrollContainerRef.current,
-            trigger: pictureWrap?.parentNode as Element,
-            scrub,
-            start: 'bottom bottom',
-            end: 'bottom 70%',
-          },
-        });
-
-      const scaleUpBoxes = gsap.utils.toArray('.element-scale-up');
-      scaleUpBoxes.forEach((scaleUpBox: any) => {
-        gsap.to(scaleUpBox, {
-          scrollTrigger: {
-            scroller: scrollContainerRef.current,
-            trigger: scaleUpBox,
-            scrub: true,
-            start: 'top bottom', // when the bottom of the trigger hits the bottom of the viewport
-            end: 'center center', // end after triggers center scrolls past center of the viewport
-          },
-          keyframes: {
-            '0%': { transform: 'scale(0.8)', opacity: 0 },
-            '100%': { transform: 'scale(1)', opacity: 1 },
-          },
-        });
-      });
-    }
+      }
+    }, 200);
   });
 
   return (
