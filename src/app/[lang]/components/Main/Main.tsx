@@ -67,7 +67,7 @@ export const Main = ({
           );
 
         const p = document.querySelector(
-          'section:nth-of-type(2) p'
+          'section:nth-of-type(2) h2'
         ) as HTMLElement;
         if (!p || !p.parentNode) return;
         gsap
