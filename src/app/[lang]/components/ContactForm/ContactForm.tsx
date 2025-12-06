@@ -84,7 +84,7 @@ export const ContactForm = ({
     try {
       setIsLoading(true);
       emailjs
-        .sendForm('service_xf8la9p', 'template_wv50r6d', form.current as any, {
+        .sendForm('service_j3cw2oj', 'template_wv50r6d', form.current as any, {
           publicKey: 'Uyb3mMjEPjxUhK-U-',
         })
         .then(
