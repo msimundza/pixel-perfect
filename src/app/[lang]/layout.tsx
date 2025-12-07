@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 import { Chakra_Petch } from 'next/font/google';
 import './globals.css';
 import { i18n, type Locale } from '../../i18n-config';
@@ -14,19 +15,19 @@ const chakra = Chakra_Petch({
   weight: ['400', '500', '600', '700'],
 });
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ lang: Locale }>;
-  }
-): Promise<Metadata> {
-  const params = await props.params;
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
   const {
     metadata: {
       title,
       description,
       openGraph: { title: ogTitle, description: ogDescription },
     },
-  } = await getDictionary(params.lang);
+  } = await getDictionary(lang as Locale);
   return {
     title,
     description,
@@ -74,20 +75,16 @@ export async function generateMetadata(
   };
 }
 
-export default async function RootLayout(
-  props: {
-    children: React.ReactNode;
-    params: Promise<{ lang: Locale }>;
-  }
-) {
-  const params = await props.params;
-
-  const {
-    children
-  } = props;
-
+export default async function RootLayout({
+  children,
+  params,
+}: {
+  children: ReactNode;
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
   return (
-    <html lang={params.lang}>
+    <html lang={lang}>
       <body
         className={`${chakra.className} grid place-items-center min-h-screen text-white overflow-x-hidden `}
       >
